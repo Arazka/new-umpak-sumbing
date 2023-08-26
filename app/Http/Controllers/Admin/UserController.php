@@ -47,7 +47,7 @@ class UserController extends Controller
     public function show($id)
     {
     $this->authorize('admin');
-       $user = Task::find($id);
+       $user = User::find($id);
     }
 
     public function edit($id)

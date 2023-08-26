@@ -18,7 +18,16 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+    
     {{-- <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" /> --}}
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+
+    <style>
+      trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
+      }
+    </style>
   </head>
 
   <body id="page-top">
@@ -95,7 +104,7 @@
     <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="{{ asset('admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    {{-- <script src="{{ asset('admin/vendor/datatables/jquery.dataTables.min.js') }}"></script> --}}
     <script src="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->

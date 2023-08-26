@@ -26,7 +26,7 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th width=40>No</th>
+                <th width=10>No</th>
                 <th>Username</th>
                 <th>Role</th>
                 <th width=200>Aksi</th>
@@ -39,7 +39,7 @@
                 <td>{{ $key+1 }}</td>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->type }}</td>
-                <td class="d-flex justify-content-center align-items-center gap-2">
+                <td class="gap-2 text-center">
                   {{-- <button type="button" class="btn btn-primary"><i class="bi bi-folder-fill"></i></button> --}}
                   <form id="delete-user-{{$user->id}}" action="{{ url("admin/account/$user->id") }}" method="POST">
                     @csrf @method('DELETE')
@@ -57,6 +57,7 @@
             </tbody>
           </table>
         </div>
+       {{ $data->links('pagination::bootstrap-4') }}
       </div>
     </div>
   </div>
