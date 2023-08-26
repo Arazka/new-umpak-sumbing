@@ -1,0 +1,168 @@
+/* body {
+  background-color: #898585;
+} */
+
+/* .container {
+  border: red solid;
+} */
+
+.header {
+    margin-top: 5.4rem;
+}
+
+/* CSS NAVBAR */
+.title .bandongan-1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.navbar-brand .bandongan {
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: none;
+}
+
+.title .address {
+    font-size: 0.9rem;
+}
+
+.navbar-brand h6 {
+    display: none;
+}
+
+.offcanvas .offcanvas-header {
+    border-bottom: 1px solid rgb(95, 95, 95);
+}
+/* END NAVBAR */
+
+/* CSS CAROUSEL */
+.carousel {
+    margin-top: 5.2rem;
+}
+
+.carousel .carousel-inner .carousel-item img {
+    width: 100%;
+    height: 90vh;
+}
+/* END CAROUSEL */
+
+/* .footer h5 {
+  text-decoration: underline;
+} */
+/*======= desa post start ======== */
+.post-banner-image {
+    height: 25rem;
+    object-fit:cover;
+    width: 100%;
+}
+/*======= desa post end ======== */
+/*======= profil ======== */
+/*======= sejarah ======== */
+.container-header {
+    margin-top: 7rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 993px) {
+    .navbar-nav {
+        margin-top: 0.8rem;
+    }
+
+    .carousel .carousel-inner .carousel-item img {
+        width: 100%;
+        height: 70vh;
+        /* border: red solid; */
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        margin-top: 4.4rem;
+    }
+
+    .title .bandongan-1 {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .title .address {
+        font-size: 0.7rem;
+    }
+
+    .navbar-brand img {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+
+    .carousel {
+        margin-top: 4.2rem;
+    }
+
+    /* .carousel-inner {
+    border: red solid;
+    position: relative;
+  }
+
+  .carousel-caption {
+    border: red solid;
+    position: absolute;
+    margin-left: 5rem;
+  } */
+
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+
+    .carousel .carousel-inner .carousel-item img {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .container-header {
+        margin-top: 6rem;
+    }
+}
+
+@media (max-width: 576px) {
+    /* .title {
+    display: none;
+  } */
+
+    /* .title .bandongan-1 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .title .address {
+    font-size: 0.7rem;
+  } */
+
+    .navbar .container .offcanvas {
+        width: 70%;
+    }
+
+    /* .carousel button {
+    top: 1rem;
+    border: red solid;
+  } */
+
+    .carousel button .carousel-control-prev-icon,
+    .carousel button .carousel-control-next-icon {
+        width: 1.3rem;
+    }
+
+    .carousel .carousel-inner .carousel-item img {
+        width: 100%;
+        height: 40vh;
+    }
+}
+
+@media (max-width: 460px) {
+    .navbar .container .title {
+        display: none;
+    }
+
+    .navbar-brand h6 {
+        display: initial;
+    }
+}

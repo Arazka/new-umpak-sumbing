@@ -13,10 +13,14 @@ class BeritaController extends Controller
     public function index(Request $request)
     {
         $berita = Berita::orderBy('created_at', 'DESC')->paginate(3);
-        
+        // ddd($berita);
         return view('admin.beranda.berita.index', ['data' => $berita]);
-        // return view('admin.beranda.berita.index', ['data' => $berita]);
     }
+    // public function berita(Request $request)
+    // {
+    //     $berita = Berita::orderBy('created_at', 'DESC')->paginate(3);
+    //     return view('welcome', ['data' => $berita]);
+    // }
 
     public function create()
     {
@@ -96,7 +100,7 @@ class BeritaController extends Controller
             return redirect('/admin/berita')->with('success','Berita berhasil dihapus!');
 
         } else {
-            return redirect('/admin/berita')->with('validationErrors',$user->message);
+            return redirect('/admin/berita')->with('validationErrors',$berita->message);
         }
     }
 }

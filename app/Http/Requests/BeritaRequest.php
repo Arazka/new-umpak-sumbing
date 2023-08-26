@@ -26,7 +26,7 @@ class BeritaRequest extends FormRequest
         return [
             'foto' => 'required|file|max:5120',
             'judul' => 'required|string',
-            'deskripsi' => 'required|string',
+            'deskripsi' => 'required',
         ];
     }
 

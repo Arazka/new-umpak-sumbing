@@ -1,0 +1,102 @@
+/* #peta .container-fluid {
+    border: red solid;
+    width: 100%;
+} */
+
+#map {
+    height: 500px;
+    width: 100%;
+    /* border: red solid; */
+}
+
+/* #desa .container .card {
+    width: 418px;
+    height: 258px;
+} */
+
+/* CSS NAVBAR */
+.title .bandongan-1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.navbar-brand .bandongan {
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: none;
+}
+
+.title .address {
+    font-size: 0.9rem;
+}
+
+.navbar-brand h6 {
+    display: none;
+}
+
+.offcanvas .offcanvas-header {
+    border-bottom: 1px solid rgb(95, 95, 95);
+}
+/* END NAVBAR */
+
+.footer h5 {
+    text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 993px) {
+    .navbar-nav {
+        margin-top: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #peta {
+        margin-top: 4.4rem;
+    }
+
+    #map {
+        height: 400px;
+        width: 100%;
+        /* border: red solid; */
+    }
+
+    .title .bandongan-1 {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .title .address {
+        font-size: 0.7rem;
+    }
+
+    .navbar-brand img {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+
+    .carousel {
+        margin-top: 4.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar .container .offcanvas {
+        width: 70%;
+    }
+
+    .carousel button .carousel-control-prev-icon,
+    .carousel button .carousel-control-next-icon {
+        width: 1.3rem;
+    }
+}
+
+@media (max-width: 460px) {
+    .navbar .container .title {
+        display: none;
+    }
+
+    .navbar-brand h6 {
+        display: initial;
+    }
+}
