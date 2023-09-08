@@ -54,14 +54,8 @@
                 <li><a class="dropdown-item" href="{{ url('/bumdesma/program-kerja') }}">Program Kerja</a></li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Regulasi </a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="{{ url('/regulasi') }}">Regulasi 1</a></li>
-                <li><a class="dropdown-item" href="{{ url('/regulasi') }}">Regulasi 2</a></li>
-                <li><a class="dropdown-item" href="{{ url('/regulasi') }}">Regulasi 3</a></li>
-                <li><a class="dropdown-item" href="{{ url('/regulasi') }}">Regulasi 4</a></li>
-              </ul>
+            <li class="nav-item">
+              <a class="nav-link fs-6" href="{{ url('/regulasi') }}">Regulasi</a>
             </li>
           </ul>
         </div>

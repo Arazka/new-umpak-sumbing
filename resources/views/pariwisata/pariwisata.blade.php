@@ -174,16 +174,21 @@
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card text-bg-dark h-25 d-inline-block w-100">
-                <a href="{{ url('/desa/desa-ngepanrejo') }}" style="text-shadow: 1px 1px 0 #000; color:white;">
-                    <img src="{{ asset('img/foto desa/desa ngepanrejo.jpg') }}" class="card-img h-100" alt="...">
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">Desa Ngepanrejo</h5>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 p-0">
+                    <div class="card text-bg-dark h-100">
+                        <a href="{{ url('/desa/desa-ngepanrejo') }}" style="text-shadow: 1px 1px 0 #000; color:white; display: block; max-height: 20rem; overflow: hidden;">
+                            <img src="{{ asset('img/foto desa/desa ngepanrejo.jpg') }}" class="card-img" alt="..." style="width: 100%; object-fit: cover;">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title">Desa Ngepanrejo</h5>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
+        
     </div>
 </section>
 @endsection
