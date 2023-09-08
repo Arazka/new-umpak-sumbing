@@ -44,7 +44,7 @@
                 <td>{{ $key+1 }}</td>
                 <td><img src="{{ asset('storage/' . $berita->foto) }}" alt="" style="width: 8rem"></td>
                 <td>{{ $berita->judul }}</td>
-                <td>{!! Str::limit($berita->deskripsi, 180) !!}</td>
+                <td>{!! Str::limit($berita->deskripsi, 170) !!}</td>
                 @can ('admin')
                 <td class="gap-2 text-center">
                   <form id="delete-berita-{{$berita->id}}" action="{{ url("admin/berita/$berita->id") }}" method="POST">
@@ -65,5 +65,6 @@
             </tbody>
           </table>
         </div>
+        {{ $data->links('pagination::bootstrap-4') }}
     </div>
 @endsection

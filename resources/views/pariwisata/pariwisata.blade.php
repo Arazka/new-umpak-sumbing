@@ -111,7 +111,7 @@
 <!-- Pariwisata Unggulan -->
 <section id="desa" class="my-5">
     <div class="container">
-        <h3 class="text-center mb-4">Pariwisata Unggulan</h3>
+        <h3 class="text-center mb-4">Pariwisata Desa</h3>
         <div class="row justify-content-left">
             <div class="col-md-4 mb-4">
                 <div class="card text-bg-dark h-100">

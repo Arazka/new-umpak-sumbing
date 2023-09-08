@@ -15,32 +15,17 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="{{ asset('img\foto desa\desa sidorejo.jpg') }}" class="d-block w-100" alt="..." />
+            <img src="{{ asset('img\foto desa\desa gandusari.jpg') }}" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
-              <h5 class="fs-1">Desa Sidorejo</h5>
-              <p>Some representative placeholder content for the first slide.</p>
+              <h5 class="fs-1">Desa Gandusari</h5>
+              <p>Some representative placeholder content for the first slide..</p>
             </div>
           </div>
-            <div class="carousel-item">
-                <img src="{{ asset('img\foto desa\desa trasan.jpg') }}" class="d-block w-100" alt="..." />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5 class="fs-1">Desa Trasan</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                </div>
-            </div>
-            <a href="desa/desaNgepanrejo.html" class="carousel-item">
-                <img src="{{ asset('img\foto desa\desa ngepanrejo.jpg') }}" class="d-block w-100" alt="..." />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5 class="fs-1">Desa Ngepanrejo</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                </div>
-            </a>
-            <div class="carousel-item">
-                <img src="{{ asset('img\foto desa\desa kalegen.jpg') }}" class="d-block w-100" alt="..." />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5 class="fs-1">Desa Kalegen</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                </div>
+          <div class="carousel-item">
+            <img src="{{ asset('img\foto desa\desa kalegen.jpg') }}" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="fs-1">Desa Kalegen</h5>
+              <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
           <div class="carousel-item">
@@ -51,9 +36,23 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="{{ asset('img\foto desa\desa kalegen.jpg') }}" class="d-block w-100" alt="..." />
+            <img src="{{ asset('img\foto desa\desa rejosari.jpg') }}" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
-              <h5 class="fs-1">Desa Kalegen</h5>
+              <h5 class="fs-1">Desa Rejosari</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{{ asset('img\foto desa\desa sidorejo.jpg') }}" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="fs-1">Desa Sidorejo</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{{ asset('img\foto desa\desa trasan.jpg') }}" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="fs-1">Desa Trasan</h5>
               <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
