@@ -125,7 +125,7 @@
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card text-bg-dark h-100">
-                    <a href="{{ url('/pariwisata/desa-gandusari') }}" style="text-shadow: 1px 1px 0 #000; color:white;">
+                    <a href="{{ url('/pariwisata/desa-gandusari') }}" style="text-shadow: 1px 1px 0 #000; color:white; height:100%">
                         <img src="{{ asset('img/foto desa/desa gandusari.jpg') }}" class="card-img h-100" alt="...">
                         <div class="card-img-overlay">
                             <h5 class="card-title">Desa Gandusari</h5>
@@ -181,9 +181,10 @@
                     <div class="card-img-overlay">
                         <h5 class="card-title">Desa Ngepanrejo</h5>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
+        
     </div>
 </section>
 @endsection
