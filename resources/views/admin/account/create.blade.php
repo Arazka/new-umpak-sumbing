@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+@section('title', 'Tambah Account')
 @section('main')
 <div class="container-fluid">
   <!-- Page Heading -->
@@ -39,7 +40,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Username</label>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="username" value="{{ old('username') }}">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="username" value="{{ old('username') }}" required>
                         @error('username')
                         <span class="text-danger">
                           {{ $message }}
@@ -48,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="password" >
+                        <input type="password" class="form-control" name="password" id="password" placeholder="password" required>
                         @error('password')
                         <span class="text-danger">
                           {{ $message }}

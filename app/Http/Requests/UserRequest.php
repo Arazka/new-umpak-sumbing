@@ -33,7 +33,7 @@ class UserRequest extends FormRequest
         return [
             'type' => 'required|in:admin,user',
             'username' => 'required|string', $username_unique,
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
         ];
     }
 
@@ -41,7 +41,7 @@ class UserRequest extends FormRequest
     {
         return [
             'required' => 'isian :attribute tidak memenuhi',
-            // 'password.required' => 'password harus lebih dari 6 karakter'
+            'password.min' => 'Password harus memiliki setidaknya 6 karakter',
         ];
     }
 }

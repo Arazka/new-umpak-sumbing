@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="{{ asset('img/logo/logo.png') }}" type="image/x-icon">
 
-    <title>Admin Umpak Sumbing</title>
+    <title>Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -93,11 +94,13 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                              <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                              <label class="custom-control-label" for="remember">Ingat Saya</label>                    
+                                              <label for="">
+                                                   &nbsp;
+                                              </label>
                                             </div>
-                                        </div>
+                                          </div>
                                         <button class="btn btn-primary btn-user btn-block" type="submit">
                                             Login
                                         </button>

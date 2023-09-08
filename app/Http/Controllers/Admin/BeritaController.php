@@ -7,25 +7,36 @@ use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use App\Http\Requests\BeritaRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 
 class BeritaController extends Controller
 {
     public function index(Request $request)
     {
         $berita = Berita::orderBy('created_at', 'DESC')->paginate(3);
+        // $berita = Berita::all();
         // ddd($berita);
         return view('admin.beranda.berita.index', ['data' => $berita]);
     }
-    // public function berita(Request $request)
-    // {
-    //     $berita = Berita::orderBy('created_at', 'DESC')->paginate(3);
-    //     return view('welcome', ['data' => $berita]);
-    // }
+
+    public function view(Request $request)
+    {
+        $berita = Berita::orderBy('created_at', 'DESC')->paginate();
+        // ddd($berita);
+        return view('admin.beranda.berita.view', ['data' => $berita]);
+    }
 
     public function create()
     {
-        $this->authorize('admin');
-        return view('admin.beranda.berita.create');
+        // $this->authorize('admin');
+
+        // return view('admin.beranda.berita.create');
+
+        if (Gate::allows('admin')) {
+            return view('admin.beranda.berita.create');
+        }
+    
+        return view('admin.404');
     }
 
     public function store(BeritaRequest $request)
@@ -39,7 +50,7 @@ class BeritaController extends Controller
         if ($berita) {
             return redirect('/admin/berita')->with('success','Berita berhasil ditambahkan!');
         } else {
-            return redirect('/admin/berita/create')->with('validationErrors',$berita->message);
+            return redirect('/admin/berita')->with('danger', 'Berita gagal ditambahkan.');
         }
     }
 
@@ -50,13 +61,17 @@ class BeritaController extends Controller
 
     public function edit($id)
     {
-        $this->authorize('admin');
+        // $this->authorize('admin');
         $berita = Berita::find($id);
 
-        return view('admin.beranda.berita.edit', compact('berita'));
+        if (Gate::allows('admin')) {
+            return view('admin.beranda.berita.edit', compact('berita'));
+        }
+    
+        return view('admin.404');
     }
 
-    public function updated (Request $request, $id)
+    public function updated (BeritaRequest $request, $id)
     {
         $berita = Berita::find($id);
 
@@ -82,7 +97,7 @@ class BeritaController extends Controller
         if ($berita->wasChanged()) {
             return redirect('/admin/berita')->with('success', 'Berita berhasil diupdate!');
         } else {
-            return redirect('/admin/berita/create')->with('validationErrors', $berita->message);
+            return redirect('/admin/berita')->with('danger', 'Berita gagal ditambahkan.');
         }
     }
 
@@ -100,7 +115,7 @@ class BeritaController extends Controller
             return redirect('/admin/berita')->with('success','Berita berhasil dihapus!');
 
         } else {
-            return redirect('/admin/berita')->with('validationErrors',$berita->message);
+            return redirect('/admin/berita')->with('danger', 'Berita gagal ditambahkan.');
         }
     }
 }

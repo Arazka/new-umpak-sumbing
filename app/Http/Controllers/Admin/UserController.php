@@ -8,23 +8,36 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller 
 {
     public function index(Request $request)
     {
-        $this->authorize('admin');
-
+        // $this->authorize('admin');
         $users = User::orderBy('created_at', 'DESC')->paginate(5);
-        return view('admin.account.index', [
-            'data' => $users
-        ]);
+
+        if (Gate::allows('admin')) {
+            return view('admin.account.index', [
+                'data' => $users
+            ]);
+        }
+    
+        return view('admin.404');
+        
     }
 
     public function create()
     {
-        $this->authorize('admin');
-        return view('admin.account.create');
+        // $this->authorize('admin');
+
+        if (Gate::allows('admin')) {
+            return view('admin.account.create');
+        }
+    
+        return view('admin.404');
+        
+        // return view('admin.account.create');
     }
 
     public function store(UserRequest $request)
@@ -40,23 +53,27 @@ class UserController extends Controller
         if ($user) {
             return redirect('/admin/account')->with('success','Data akun berhasil ditambahkan!');
         } else {
-            return redirect('/admin/create')->with('validationErrors',$user->message);
+            return redirect('/admin/account')->with('danger', 'Data akun gagal ditambahkan.');
         }
     }
 
     public function show($id)
     {
-    $this->authorize('admin');
+        $this->authorize('admin');
        $user = User::find($id);
     }
 
     public function edit($id)
     {
-        $this->authorize('admin');
+        // $this->authorize('admin');
         
         $user = User::find($id);
 
-        return view('admin.account.edit', compact('user'));
+        if (Gate::allows('admin')) {
+            return view('admin.account.edit', compact('user'));
+        }
+    
+        return view('admin.404');
     }
 
     public function updated(UserRequest $request, $id)
@@ -74,7 +91,7 @@ class UserController extends Controller
         if ($user) {
             return redirect('/admin/account')->with('success','Data akun berhasil diedit!');
         } else {
-            return redirect('/admin/account/{id}/edit')->with('validationErrors',$user->message);
+            return redirect('/admin/account')->with('danger', 'Data akun gagal diedit!');
         }
     }
 
@@ -85,7 +102,7 @@ class UserController extends Controller
         if ($user) {
             return redirect('/admin/account')->with('success','Data akun berhasil dihapus!');
         } else {
-            return redirect('/admin/account')->with('validationErrors',$user->message);
+            return redirect('/admin/account')->with('danger', 'Data akun gagal dihapus!');
         }
     }
 }

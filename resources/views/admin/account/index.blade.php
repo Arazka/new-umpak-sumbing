@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+@section('title', 'Data Account')
 @section('main')
 <div class="container-fluid">
     <!-- Page Heading -->

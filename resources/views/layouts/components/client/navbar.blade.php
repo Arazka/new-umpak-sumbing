@@ -2,7 +2,7 @@
     <div class="container-fluid">
       <a class="navbar-brand d-flex align-item-center" href="#">
         <img src="{{ asset('img/logo/logo.png') }}" alt="Logo" width="60" height="60" class="d-inline-block align-text-top" style="border-radius: 1rem 0 1rem 0" />
-        <!-- <h6 class="my-auto mx-2">Umpak Sumbing</h6> -->
+        <div class="bandongan my-auto mx-2">Umpak Sumbing</div>
         <div class="title mx-2 mx-md-3">
           <div class="bandongan-1">Umpak Sumbing</div>
           <div class="address">Kawasan Pedesaan Umpak Sumbing, Kecamatan Bandongan</div>
@@ -54,14 +54,8 @@
                 <li><a class="dropdown-item" href="{{ url('/bumdesma/program-kerja') }}">Program Kerja</a></li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Regulasi </a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="{{ url('/regulasi') }}">Regulasi 1</a></li>
-                <li><a class="dropdown-item" href="{{ url('/regulasi') }}">Regulasi 2</a></li>
-                <li><a class="dropdown-item" href="{{ url('/regulasi') }}">Regulasi 3</a></li>
-                <li><a class="dropdown-item" href="{{ url('/regulasi') }}">Regulasi 4</a></li>
-              </ul>
+            <li class="nav-item">
+              <a class="nav-link fs-6" href="{{ url('/regulasi') }}">Regulasi</a>
             </li>
           </ul>
         </div>

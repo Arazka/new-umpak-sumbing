@@ -24,7 +24,7 @@ class BeritaRequest extends FormRequest
     public function rules()
     {
         return [
-            'foto' => 'required|file|max:5120',
+            'foto' => 'file|max:5120',
             'judul' => 'required|string',
             'deskripsi' => 'required',
         ];
@@ -34,6 +34,7 @@ class BeritaRequest extends FormRequest
     {
         return [
             'required' => 'isian :attribute tidak memenuhi',
+            'foto.max' => 'Ukuran foto harus lebih kecil dari 5 MB',
         ];
     }
 }

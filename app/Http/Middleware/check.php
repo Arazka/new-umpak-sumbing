@@ -20,6 +20,10 @@ class check
         if (!Auth::check()) {
             return redirect()->route('login')->with('danger', 'Silahkan login terlebih dahulu!');
         }
+
+        // if (auth()->check() && auth()->user()->type !== 'admin') {
+        //     return redirect('/404'); 
+        // }
         
         return $next($request); 
     }

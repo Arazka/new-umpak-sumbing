@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+@section('title', 'Tambah Berita')
 @section('main')
 <div class="container-fluid">
   <!-- Page Heading -->
@@ -32,7 +33,7 @@
                     <div class="mb-3">
                         <label for="foto" class="form-label">Upload foto</label>
                         <img class="img-preview img-fluid col-sm-3 mb-3">
-                        <input class="form-control" type="file" id="foto" name="foto" onchange="previewImage()">
+                        <input class="form-control" type="file" id="foto" name="foto" onchange="previewImage()" required>
                         @error('foto')
                         <span class="text-danger">
                           {{ $message }}
@@ -41,23 +42,23 @@
                       </div>
                     <div class="form-group">
                         <label for="judul">Judul</label>
-                        <input type="text" class="form-control" name="judul" id="judul" placeholder="judul" value="{{ old('judul') }}">
+                        <input type="text" class="form-control" name="judul" id="judul" placeholder="judul" value="{{ old('judul') }}" required>
                         @error('judul')
                         <span class="text-danger">
                           {{ $message }}
                         </span>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="exampleInputPassword1">Deskripsi</label>
-                        <textarea type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" value="{{ old('deskripsi') }}"></textarea>
+                        <textarea type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" rows="7" value="{{ old('deskripsi') }}" required></textarea>
                         @error('deskripsi')
                         <span class="text-danger">
                           {{ $message }}
                         </span>
                         @enderror
-                    </div>
-                    {{-- <div class="form-group">
+                    </div> --}}
+                    <div class="form-group">
                         <label for="exampleInputPassword1">Deskripsi</label>
                         <input id="deskripsi" type="hidden" name="deskripsi">
                         <trix-editor input="deskripsi"></trix-editor>
@@ -66,7 +67,7 @@
                           {{ $message }}
                         </span>
                         @enderror
-                    </div> --}}
+                    </div>
                 </div>
                 <div class="card-body">
                     <button type="submit" class="btn btn-primary">Simpan</button>

@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+@section('title', 'Edit Berita')
 @section('main')
 <div class="container-fluid">
   <!-- Page Heading -->
@@ -41,22 +42,32 @@
                     </div>
                     <div class="form-group">
                         <label for="judul">Judul</label>
-                        <input type="text" class="form-control" name="judul" id="judul" placeholder="judul" value="{{ old('judul', $berita->judul) }}">
+                        <input type="text" class="form-control" name="judul" id="judul" placeholder="judul" value="{{ old('judul', $berita->judul) }}" required>
                         @error('judul')
                         <span class="text-danger">
                           {{ $message }}
                         </span>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                       <label for="deskripsi">Deskripsi</label>
-                      <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi">{{ old('deskripsi', $berita->deskripsi) }}</textarea>
+                      <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" rows="7" required>{{ old('deskripsi', $berita->deskripsi) }}</textarea>
                       @error('deskripsi')
                       <span class="text-danger">
                           {{ $message }}
                       </span>
                       @enderror
-                  </div>
+                    </div> --}}
+                    <div class="form-group">
+                      <label for="deskripsi">Deskripsi</label>
+                      <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi', $berita->deskripsi) }}" required>
+                      <trix-editor input="deskripsi"></trix-editor>
+                      @error('deskripsi')
+                      <span class="text-danger">
+                          {{ $message }}
+                      </span>
+                      @enderror
+                    </div>
                   
                 </div>
                 <div class="card-body">

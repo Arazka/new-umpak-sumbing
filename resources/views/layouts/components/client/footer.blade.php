@@ -11,6 +11,8 @@
           <ul class="list-unstyled">
             <li><a href="#">Beranda</a></li>
             <li><a href="#">Pariwisata</a></li>
+            <li><a href="#">Produk Unggulan</a></li>
+            <li><a href="#">Regulasi</a></li>
           </ul>
         </div>
         <div class="col-lg-4 col-md-12">
