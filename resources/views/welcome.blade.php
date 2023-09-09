@@ -11,49 +11,42 @@
             <img src="{{ asset('img\foto desa\desa bandongan.jpg') }}" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
               <h5 class="fs-1">Desa Bandongan</h5>
-              <p>Some representative placeholder content for the first slide..</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="{{ asset('img\foto desa\desa gandusari.jpg') }}" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
               <h5 class="fs-1">Desa Gandusari</h5>
-              <p>Some representative placeholder content for the first slide..</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="{{ asset('img\foto desa\desa kalegen.jpg') }}" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
               <h5 class="fs-1">Desa Kalegen</h5>
-              <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="{{ asset('img\foto desa\desa ngepanrejo.jpg') }}" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
               <h5 class="fs-1">Desa Ngepanrejo</h5>
-              <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="{{ asset('img\foto desa\desa rejosari.jpg') }}" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
               <h5 class="fs-1">Desa Rejosari</h5>
-              <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="{{ asset('img\foto desa\desa sidorejo.jpg') }}" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
               <h5 class="fs-1">Desa Sidorejo</h5>
-              <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="{{ asset('img\foto desa\desa trasan.jpg') }}" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
               <h5 class="fs-1">Desa Trasan</h5>
-              <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
         </div>
@@ -132,22 +125,12 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button h1 fs-4 fw-bold" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                                aria-controls="panelsStayOpen-collapseOne">Visi</button>
+                                aria-controls="panelsStayOpen-collapseOne">Misi</button>
                         </h2>
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                             <div class="accordion-body">
-                                <div class="list-group-numbered py-2">
-                                    <li class="list-group-item">Mempercepat dan meningkatkan penyelenggaraan pemerintahan
-                                    </li>
-                                    <br />
-                                    <li class="list-group-item">Mempercepat dan meningkatkan pelaksanaan pembangunan</li>
-                                    <br />
-                                    <li class="list-group-item">Mempercepat dan meningkatkan pembinaan kemasyarakatan</li>
-                                    <br />
-                                    <li class="list-group-item">Mempercepat dan meningkatkan pemberdayaan masyarakat</li>
-                                    <br />
-                                    <li class="list-group-item">Mengembangkan potensi desa yang berdaya saing tinggi</li>
-                                </div>
+                              <p>Terwujudnya masyarakat religius dan sejahtera melalui percepatan pembangunan kawasan
+                                perdesaan dan potensi desa yang berdaya saing.</p>
                             </div>
                         </div>
                     </div>
@@ -155,12 +138,22 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed h1 fs-4 fw-bold" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo"
-                                aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">Misi</button>
+                                aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">Visi</button>
                         </h2>
                         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                             <div class="accordion-body">
-                                <p>Terwujudnya masyarakat religius dan sejahtera melalui percepatan pembangunan kawasan
-                                    perdesaan dan potensi desa yang berdaya saing.</p>
+                              <div class="list-group-numbered py-2">
+                                <li class="list-group-item">Mempercepat dan meningkatkan penyelenggaraan pemerintahan
+                                </li>
+                                <br />
+                                <li class="list-group-item">Mempercepat dan meningkatkan pelaksanaan pembangunan</li>
+                                <br />
+                                <li class="list-group-item">Mempercepat dan meningkatkan pembinaan kemasyarakatan</li>
+                                <br />
+                                <li class="list-group-item">Mempercepat dan meningkatkan pemberdayaan masyarakat</li>
+                                <br />
+                                <li class="list-group-item">Mengembangkan potensi desa yang berdaya saing tinggi</li>
+                            </div>
                             </div>
                         </div>
                     </div>
