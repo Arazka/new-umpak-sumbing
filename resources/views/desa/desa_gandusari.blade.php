@@ -6,7 +6,7 @@
   <!-- Full-width picture -->
   
     <div class="col-12 p-0">
-      <img src="{{ asset('img\foto desa\desa gandusari.jpg') }}" class="post-banner-image" alt="Full-width Picture">
+      <img src="{{ asset('storage/'. $gandusaris->first()->foto) }}" class="post-banner-image" alt="Full-width Picture">
     </div>
   
 
@@ -17,9 +17,9 @@
       <div class="umpak-sumbing col-lg-8 mb-4">
         <!-- Section 1 deskripsi desa -->
         <section>
-          <h2 class="text-left">Desa Gandusari</h2>
+          <h2 class="text-left">{{ $gandusaris->first()->nama_desa }}</h2>
           <hr>
-          <p>Gandusari merupakan kelurahan yang ada di Kec Bandongan, Kab.Magelang. yang memiliki luas 5,73Km persegi, dengan hampir 70% luas daerah nya lebih besar area persawahan dan juga hutan atau perkebunan milik warga, dari pada tempat pemukiman. maka tak heran jika rata-rata warga setempat bermata pencaharian dengan bertani dan berkebun.</p>
+          <p>{!! $gandusaris->first()->sejarah !!}</p>
         </section>
 
         <!-- Section 2 destinasi wisata unggulan-->

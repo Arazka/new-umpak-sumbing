@@ -1,0 +1,70 @@
+@extends('layouts.admin')
+
+@section('title', 'Data Wisata Desa Ngepanrejo')
+@section('main')
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <h1 class="h3 mb-0 text-gray-800">Data Wisata Desa Ngepanrejo</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data Wisata Desa Ngepanrejo</li>
+            </ol>
+          </nav>
+      </div>
+      
+    @include ('includes.flash')
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3 justify-content-between d-flex">
+      @if (Auth::user()->type == 'admin')  
+        <a class="btn btn-primary" href="{{ url('/admin/wisata-ngepanrejo/create') }}">Tambah Wisata</a>
+      @endif
+      <a class="btn btn-warning" href="{{ url('/admin/view-wisata-ngepanrejo') }}">Lihat Data Wisata Desa Ngepanrejo</a>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <th width=10>No</th>
+                <th width=170>Foto</th>
+                <th>Nama Pariwisata</th>
+                <th width=500>Deskripsi</th>
+                @can ('admin')
+                <th width=200>Aksi</th>
+                @endcan
+            </thead>
+            <tbody>
+              @if ($data != null)
+              @foreach ($data as $key => $wisata)
+              <tr>
+                <td>{{ $key+1 }}</td>
+                <td><img src="{{ asset('storage/' . $wisata->foto) }}" alt="" style="width: 8rem"></td>
+                <td>{{ $wisata->judul }}</td>
+                <td>{!! Str::limit($wisata->deskripsi, 150) !!}</td>
+                @can('admin')
+                <td class="gap-2 text-center">
+                  <form id="delete-wisata-{{$wisata->id}}" action="{{ url("admin/wisata-ngepanrejo/$wisata->id") }}" method="POST">
+                  @csrf @method('DELETE')
+                  {{-- <button type="button" class="btn btn-primary"><i class="bi bi-folder-fill"></i> Lihat</button> --}}
+                  @if (Auth::user()->type == 'admin')
+                  <a href="{{ url("admin/wisata-ngepanrejo/$wisata->id/edit") }}" class="btn btn-success"><i class="bi bi-pencil-fill" title="Edit"> Edit</i></a>
+                      <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus">
+                        <i class="fa fa-trash"></i> Hapus
+                      </button>
+                  @endif
+                  </form>
+                </td>
+                @endcan
+              </tr>
+              @endforeach
+              @endif
+            </tbody>
+          </table>
+        </div>
+        {{ $data->links('pagination::bootstrap-4') }}
+      </div>
+    </div>
+  </div>
+@endsection

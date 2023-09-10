@@ -6,7 +6,7 @@
   <!-- Full-width picture -->
   <div class="row">
     <div class="col-12 p-0">
-      <img src="{{ asset('img\foto desa\desa sidorejo.jpg') }}" class="post-banner-image" alt="Full-width Picture">
+      <img src="{{ asset('storage/'. $sidorejos->first()->foto) }}" class="post-banner-image" alt="Full-width Picture">
     </div>
   </div>
 
@@ -17,13 +17,9 @@
       <div class="umpak-sumbing col-lg-8 mb-4">
         <!-- Section 1 deskripsi desa -->
         <section>
-          <h2 class="text-left">Desa Sidorejo</h2>
+          <h2 class="text-left">{{  $sidorejos->first()->nama_desa }}</h2>
           <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa eros. Nullam fringilla tortor vel
-            mauris pulvinar, et iaculis elit rutrum. Donec eget varius sem. Phasellus sagittis felis at volutpat
-            tristique. Nulla consectetur metus in nisi scelerisque, sit amet ultricies dolor efficitur. In semper
-            metus id ligula elementum fringilla. Vivamus pellentesque enim non mauris feugiat pharetra. Nulla id
-            sodales orci, ut bibendum ex.</p>
+          <p>{!!  $sidorejos->first()->sejarah !!}</p>
         </section>
 
         <!-- Section 2 destinasi wisata unggulan-->

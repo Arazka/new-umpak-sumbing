@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
-@section('title', 'Edit Berita')
+@section('title', 'Update Berita')
 @section('main')
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-2">
-    <h1 class="h3 mb-0 text-gray-800">Tambah Berita</h1>
+    <h1 class="h3 mb-0 text-gray-800">Update Berita</h1>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{ url('admin/berita') }}">Data Berita</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Tambah Data Berita</li>
+        <li class="breadcrumb-item active" aria-current="page">Update Data Berita</li>
       </ol>
     </nav>
   </div>

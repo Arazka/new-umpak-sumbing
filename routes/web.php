@@ -1,20 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+// ===== Admin =====
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\BeritaController;
-use App\Http\Controllers\Admin\BandonganController;
-use App\Http\Controllers\Admin\RejosariController;
-use App\Http\Controllers\Admin\GandusariController;
-use App\Http\Controllers\Admin\KalegenController;
-use App\Http\Controllers\Admin\NgepanrejoController;
-use App\Http\Controllers\Admin\SidorejoController;
-use App\Http\Controllers\Admin\TrasanController;
+use App\Http\Controllers\Admin\DesaController;
 
-use App\Http\Controllers\BeritaTerbaruController;
+use App\Http\Controllers\Admin\Beranda\BeritaController;
+use App\Http\Controllers\Admin\Beranda\ProfileUmpakSumbingController;
+
+use App\Http\Controllers\Admin\PariwisataDesa\BandonganController;
+use App\Http\Controllers\Admin\PariwisataDesa\RejosariController;
+use App\Http\Controllers\Admin\PariwisataDesa\GandusariController;
+use App\Http\Controllers\Admin\PariwisataDesa\KalegenController;
+use App\Http\Controllers\Admin\PariwisataDesa\NgepanrejoController;
+use App\Http\Controllers\Admin\PariwisataDesa\SidorejoController;
+use App\Http\Controllers\Admin\PariwisataDesa\TrasanController;
+// =================
+
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WisataController;
+use App\Http\Controllers\GetDesaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +57,26 @@ Route::middleware(['auth' => 'check'])->group(function () {
         Route::get('/admin/account/{id}/edit', [UserController::class, 'edit']);
         Route::patch('/admin/account/{id}', [UserController::class, 'updated']);
         Route::delete('/admin/account/{id}', [UserController::class, 'destroy']);
+    });
+
+    // ===== Desa =====
+    Route::name('desa')->group(function () {
+        Route::get('/admin/desa', [DesaController::class, 'index']);
+        Route::get('/admin/desa/create', [DesaController::class, 'create']);
+        Route::post('/admin/desa', [DesaController::class, 'store']);
+        Route::get('/admin/desa/{id}/edit', [DesaController::class, 'edit']);
+        Route::patch('/admin/desa/{id}', [DesaController::class, 'updated']);
+        Route::delete('/admin/desa/{id}', [DesaController::class, 'destroy']);
+    });
+
+    // ===== Profil Umpak Sumbing =====
+    Route::name('profile-umpak-sumbing')->group(function () {
+        Route::get('/admin/profile-umpak-sumbing', [ProfileUmpakSumbingController::class, 'index']);
+        Route::get('/admin/profile-umpak-sumbing/create', [ProfileUmpakSumbingController::class, 'create']);
+        Route::post('/admin/profile-umpak-sumbing', [ProfileUmpakSumbingController::class, 'store']);
+        Route::get('/admin/profile-umpak-sumbing/{id}/edit', [ProfileUmpakSumbingController::class, 'edit']);
+        Route::patch('/admin/profile-umpak-sumbing/{id}', [ProfileUmpakSumbingController::class, 'updated']);
+        Route::delete('/admin/profile-umpak-sumbing/{id}', [ProfileUmpakSumbingController::class, 'destroy']);
     });
 
     // ===== Berita =====
@@ -143,10 +171,11 @@ Route::middleware(['auth' => 'check'])->group(function () {
 Route::middleware(['guest'])->group(function () {
 
         // ===== Home/Beranda =====
-        Route::get('/', [BeritaTerbaruController::class, 'index']);
+        Route::get('/', [BerandaController::class, 'index']);
 
         // ===== Pariwisata =====
-        Route::get('/pariwisata', function () {return view('pariwisata/pariwisata');});
+        // Route::get('/pariwisata', function () {return view('pariwisata/pariwisata');});
+        Route::get('/pariwisata', [WisataController::class, 'pariwisata']);
 
         // pariwisata dan detail desa
         Route::get('/pariwisata/desa-bandongan', [WisataController::class, 'bandongan']);

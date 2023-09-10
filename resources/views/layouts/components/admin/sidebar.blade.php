@@ -25,6 +25,12 @@
         <span>Account</span></a>
     </li>
     @endcan
+    
+    <li class="nav-item {{ (request()->routeIs('desa')) ? 'active' : '' }}">
+      <a class="nav-link" href="{{  url('/admin/desa') }}">
+        <i class="bi bi-house-fill"></i>
+        <span>Desa</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider" />
@@ -33,21 +39,26 @@
     <div class="sidebar-heading">Beranda</div>
 
     <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item {{ (request()->routeIs('profile-umpak-sumbing')) ? 'active' : '' }}">
+      <a class="nav-link" href="{{  url('/admin/profile-umpak-sumbing') }}">
+        <i class="bi bi-clock-history"></i>
+        <span>Profil Umpak Sumbing</span></a>
+    </li>
     <li class="nav-item {{ (request()->routeIs('berita')) ? 'active' : '' }}">
       <a class="nav-link" href="{{ url('admin/berita') }}">
         <i class="bi bi-newspaper"></i>
-        <span>Berita Terbaru</span></a
-      >
-
+        <span>Berita Terbaru</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider" />
 
     <!-- Heading -->
+    <div class="sidebar-heading">Pariwisata</div>
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
           aria-expanded="true" aria-controls="collapseTwo">
           <i class="bi bi-globe-asia-australia"></i>
-          <span>Pariwisata</span>
+          <span>Pariwisata Desa</span>
       </a>
       <div id="collapseTwo" class="collapse {{ (request()->routeIs('bandongan')) ? 'show' : '' }} {{ (request()->routeIs('rejosari')) ? 'show' : '' }} {{ (request()->routeIs('gandusari')) ? 'show' : '' }} {{ (request()->routeIs('kalegen')) ? 'show' : '' }} {{ (request()->routeIs('ngepanrejo')) ? 'show' : '' }} {{ (request()->routeIs('sidorejo')) ? 'show' : '' }} {{ (request()->routeIs('trasan')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -59,6 +70,24 @@
               <a class="collapse-item {{ (request()->routeIs('rejosari')) ? 'active' : '' }}" href="{{ url('/admin/wisata-rejosari') }}">Desa Rejosari</a>
               <a class="collapse-item {{ (request()->routeIs('sidorejo')) ? 'active' : '' }}" href="{{ url('/admin/wisata-sidorejo') }}">Desa Sidorejo</a>
               <a class="collapse-item {{ (request()->routeIs('trasan')) ? 'active' : '' }}" href="{{ url('/admin/wisata-trasan') }}">Desa Trasan</a>
+          </div>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="bi bi-globe-asia-australia"></i>
+          <span>Pariwisata Kawasan</span>
+      </a>
+      <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Kawasan:</h6>
+              <a class="collapse-item {{ (request()->routeIs('kawasan')) ? 'active' : '' }}" href="{{ url('') }}">Data Kawasan</a>
+              <h6 class="collapse-header">Pariwisata:</h6>
+              <a class="collapse-item {{ (request()->routeIs('panorama')) ? 'active' : '' }}" href="{{ url('') }}">Panorama</a>
+              <a class="collapse-item {{ (request()->routeIs('agrowisata')) ? 'active' : '' }}" href="{{ url('') }}">Agrowisata</a>
+              <a class="collapse-item {{ (request()->routeIs('perairan')) ? 'active' : '' }}" href="{{ url('') }}">Perairan</a>
           </div>
       </div>
     </li>

@@ -89,9 +89,9 @@ class UserController extends Controller
         ]);
 
         if ($user) {
-            return redirect('/admin/account')->with('success','Data akun berhasil diedit!');
+            return redirect('/admin/account')->with('success','Data akun berhasil diupdate!');
         } else {
-            return redirect('/admin/account')->with('danger', 'Data akun gagal diedit!');
+            return redirect('/admin/account')->with('danger', 'Data akun gagal diupdate!');
         }
     }
 
