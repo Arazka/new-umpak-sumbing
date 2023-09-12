@@ -30,6 +30,15 @@
       <form method="POST" action="{{ url('/admin/wisata-kawasan-agrowisata') }}" enctype="multipart/form-data">
         @csrf
                 <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputJK">Nama Kawasan</label>
+                    <select class="form-control" name="kawasan_id" id="kawasan_id" required>
+                      <option value="">--- Nama Kawasan ---</option>
+                        @foreach ($kawasan as $key => $kawasans)
+                            <option value="{{ $kawasans->id }}">{{ $kawasans->nama_kawasan }}</option>
+                        @endforeach
+                    </select>
+                    </div>
                     <div class="mb-3">
                         <label for="foto" class="form-label">Upload foto</label>
                         <img class="img-preview img-fluid col-sm-3 mb-3">

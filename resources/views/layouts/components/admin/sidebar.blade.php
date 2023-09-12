@@ -80,14 +80,14 @@
           <i class="bi bi-globe-asia-australia"></i>
           <span>Pariwisata Kawasan</span>
       </a>
-      <div id="collapseUtilities" class="collapse {{ (request()->routeIs('kawasan')) ? 'show' : '' }} {{ (request()->routeIs('agrowisata')) ? 'show' : '' }} {{ (request()->routeIs('panorama')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div id="collapseUtilities" class="collapse {{ (request()->routeIs('kawasan')) ? 'show' : '' }} {{ (request()->routeIs('agrowisata')) ? 'show' : '' }} {{ (request()->routeIs('panorama')) ? 'show' : '' }} {{ (request()->routeIs('wisata-air')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Kawasan:</h6>
               <a class="collapse-item {{ (request()->routeIs('kawasan')) ? 'active' : '' }}" href="{{ url('/admin/kawasan') }}">Data Kawasan</a>
               <h6 class="collapse-header">Pariwisata:</h6>
               <a class="collapse-item {{ (request()->routeIs('panorama')) ? 'active' : '' }}" href="{{ url('/admin/wisata-kawasan-panorama') }}">Panorama</a>
               <a class="collapse-item {{ (request()->routeIs('agrowisata')) ? 'active' : '' }}" href="{{ url('/admin/wisata-kawasan-agrowisata') }}">Agrowisata</a>
-              <a class="collapse-item {{ (request()->routeIs('wisataair')) ? 'active' : '' }}" href="{{ url('') }}">Wisata air</a>
+              <a class="collapse-item {{ (request()->routeIs('wisata-air')) ? 'active' : '' }}" href="{{ url('/admin/wisata-kawasan-wisata-air') }}">Wisata air</a>
           </div>
       </div>
     </li>

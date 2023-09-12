@@ -19,9 +19,9 @@
     <div class="card shadow mb-4">
       <div class="card-header py-3 justify-content-between d-flex">
       @if (Auth::user()->type == 'admin')
-        {{-- <a class="btn btn-primary" href="{{ url('/admin/kawasan/create') }}" title="Tambah Data Kawasan">Tambah Data Kawasan</a> --}}
+        <a class="btn btn-primary" href="{{ url('/admin/kawasan/create') }}" title="Tambah Data Kawasan">Tambah Data Kawasan</a>
       @endif
-      <a class="btn btn-warning" href="{{ url('/admin/view-kawasan') }}" title="Lihat Data Kawasan">Lihat Data Kawasan</a>
+      {{-- <a class="btn btn-warning" href="{{ url('/admin/view-kawasan') }}" title="Lihat Data Kawasan">Lihat Data Kawasan</a> --}}
       </div>
       <div class="card-body">
         <div class="table-responsive">

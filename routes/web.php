@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Beranda\ProfileUmpakSumbingController;
 use App\Http\Controllers\Admin\PariwisataKawasan\KawasanController;
 use App\Http\Controllers\Admin\PariwisataKawasan\AgrowisataController;
 use App\Http\Controllers\Admin\PariwisataKawasan\PanoramaController;
+use App\Http\Controllers\Admin\PariwisataKawasan\WisataAirController;
 
 use App\Http\Controllers\Admin\PariwisataDesa\BandonganController;
 use App\Http\Controllers\Admin\PariwisataDesa\RejosariController;
@@ -203,6 +204,17 @@ Route::middleware(['auth' => 'check'])->group(function () {
         Route::patch('/admin/wisata-kawasan-panorama/{id}', [PanoramaController::class, 'updated']);
         Route::delete('/admin/wisata-kawasan-panorama/{id}', [PanoramaController::class, 'destroy']);
     });
+    
+    // ===== panorama =====
+    Route::name('wisata-air')->group(function () {
+        Route::get('/admin/wisata-kawasan-wisata-air', [WisataAirController::class, 'index']);
+        Route::get('/admin/view-wisata-kawasan-wisata-air', [WisataAirController::class, 'view']);
+        Route::get('/admin/wisata-kawasan-wisata-air/create', [WisataAirController::class, 'create']);
+        Route::post('/admin/wisata-kawasan-wisata-air', [WisataAirController::class, 'store']);
+        Route::get('/admin/wisata-kawasan-wisata-air/{id}/edit', [WisataAirController::class, 'edit']);
+        Route::patch('/admin/wisata-kawasan-wisata-air/{id}', [WisataAirController::class, 'updated']);
+        Route::delete('/admin/wisata-kawasan-wisata-air/{id}', [WisataAirController::class, 'destroy']);
+    });
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -214,7 +226,6 @@ Route::middleware(['guest'])->group(function () {
         // Route::get('/pariwisata', function () {return view('pariwisata/pariwisata');});
         Route::get('/pariwisata', [PariwisataDesaController::class, 'desa']);
         Route::get('/pariwisata/{nama_desa}', [PariwisataDesaController::class, 'pariwisata']);
-        // Route::get('/pariwisata/{nama_desa}', [PariwisataDesaController::class, 'pariwisataProfilDesa']);
 
         // pariwisata dan detail desa
         // Route::get('/pariwisata/desa-bandongan', [WisataController::class, 'bandongan']);

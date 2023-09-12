@@ -24,6 +24,7 @@ class PariwisataKawasanRequest extends FormRequest
     public function rules()
     {
         return [
+            'kawasan_id' => 'string',
             'foto' => 'file|max:5120',
             'nama_wisata' => 'required|string',
             'deskripsi' => 'required',

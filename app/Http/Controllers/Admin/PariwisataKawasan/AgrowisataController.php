@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin\PariwisataKawasan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Agrowisata;
+use App\Models\Kawasan;
+use App\Models\PariwisataKawasan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\PariwisataKawasanRequest;
@@ -13,7 +14,16 @@ class AgrowisataController extends Controller
 {
     public function index()
     {
-        $agro = Agrowisata::orderBy('created_at', 'DESC')->paginate(3);
+        $agro = PariwisataKawasan::join('kawasans','kawasans.id','=','pariwisata_kawasans.kawasan_id')
+                                    ->where('kawasans.nama_kawasan','=',"Agrowisata")
+                                    ->select([
+                                        'pariwisata_kawasans.id',
+                                        'pariwisata_kawasans.foto',
+                                        'pariwisata_kawasans.nama_wisata',
+                                        'pariwisata_kawasans.deskripsi',
+                                    ])
+                                    ->orderBy('pariwisata_kawasans.created_at','DESC')
+                                    ->paginate(3);
 
         return view('admin.pariwisata.pariwisataKawasan.pariwisata.agrowisata.index', ['data' => $agro]);
     }
@@ -22,15 +32,16 @@ class AgrowisataController extends Controller
     {
         // $this->authorize('admin');
 
-        $agro = Agrowisata::orderBy('created_at','DESC')->paginate();
+        $agro = PariwisataKawasan::orderBy('created_at','DESC')->paginate();
 
         return view('admin.pariwisata.pariwisataKawasan.pariwisata.agrowisata.view', ['data' => $agro]);
     }
 
     public function create()
     {
+        $kawasan = Kawasan::all();
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataKawasan.pariwisata.agrowisata.create');
+            return view('admin.pariwisata.pariwisataKawasan.pariwisata.agrowisata.create', compact('kawasan'));
         }
     
         return view('admin.404');
@@ -40,7 +51,8 @@ class AgrowisataController extends Controller
     {
         $this->authorize('admin');
 
-        $agro = Agrowisata::create([
+        $agro = PariwisataKawasan::create([
+            'kawasan_id' => $request->kawasan_id,
             'foto' => $request->file('foto')->store('pariwisata_kawasan'),
             'nama_wisata' => $request->nama_wisata,
             'deskripsi' => $request->deskripsi,
@@ -55,16 +67,15 @@ class AgrowisataController extends Controller
 
     public function show($id)
     {
-        $agro = Agrowisata::find($id);
+        $agro = PariwisataKawasan::find($id);
     }
 
     public function edit($id)
     {
-        // $this->authorize('admin');
-
-        $agro = Agrowisata::find($id);
+        $kawasan = Kawasan::all();
+        $agro = PariwisataKawasan::find($id);
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataKawasan.pariwisata.agrowisata.edit', compact('agro'));
+            return view('admin.pariwisata.pariwisataKawasan.pariwisata.agrowisata.edit', compact('agro', 'kawasan'));
         }
     
         return view('admin.404');
@@ -75,7 +86,7 @@ class AgrowisataController extends Controller
     {
         $this->authorize('admin');
 
-        $agro = Agrowisata::find($id);
+        $agro = PariwisataKawasan::find($id);
 
         // Periksa apakah ada file yang diunggah
         if ($request->hasFile('foto')) {
@@ -106,7 +117,7 @@ class AgrowisataController extends Controller
     public function destroy($id)
     {
         $this->authorize('admin');
-        $agro = Agrowisata::find($id);
+        $agro = PariwisataKawasan::find($id);
 
         if($agro) {
             if($agro->foto != null) {

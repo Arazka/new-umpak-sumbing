@@ -21,7 +21,7 @@
       @if (Auth::user()->type == 'admin')  
         <a class="btn btn-primary" href="{{ url('/admin/wisata-kawasan-panorama/create') }}">Tambah Wisata</a>
       @endif
-      <a class="btn btn-warning" href="{{ url('/admin/view-wisata-kawasan-panorama') }}">Lihat Data Wisata Kawasan Panorama</a>
+      {{-- <a class="btn btn-warning" href="{{ url('/admin/view-wisata-kawasan-panorama') }}">Lihat Data Wisata Kawasan Panorama</a> --}}
       </div>
       <div class="card-body">
         <div class="table-responsive">

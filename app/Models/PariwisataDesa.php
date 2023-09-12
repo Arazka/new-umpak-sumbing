@@ -16,6 +16,6 @@ class PariwisataDesa extends Model
 
     public function desas()
     {
-        return $this->belongTo(Desa::class);
+        return $this->belongsTo(Desa::class);
     }
 }

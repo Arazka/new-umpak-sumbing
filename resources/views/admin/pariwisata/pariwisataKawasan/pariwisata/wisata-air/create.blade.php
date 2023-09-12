@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Tambah Data Wisata Kawasan Panorama')
+@section('title', 'Tambah Data Wisata Kawasan Wisata Air')
 @section('main')
 <div class="container-fluid">
   <!-- Page Heading -->
@@ -9,7 +9,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ url('admin/wisata-kawasan-panorama') }}">Data Wisata Kawasan Panorama</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('admin/wisata-kawasan-wisata-air') }}">Data Wisata Kawasan Wisata Air</a></li>
         <li class="breadcrumb-item active" aria-current="page">Tambah Data Wisata</li>
       </ol>
     </nav>
@@ -27,7 +27,7 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-body">
-      <form method="POST" action="{{ url('/admin/wisata-kawasan-panorama') }}" enctype="multipart/form-data">
+      <form method="POST" action="{{ url('/admin/wisata-kawasan-wisata-air') }}" enctype="multipart/form-data">
         @csrf
                 <div class="card-body">
                   <div class="form-group">

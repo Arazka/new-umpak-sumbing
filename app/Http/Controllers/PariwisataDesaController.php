@@ -17,10 +17,10 @@ class PariwisataDesaController extends Controller
 
     public function pariwisata($nama_desa)
     {       
-        $pariwisata_id = Desa::where('nama_desa', $nama_desa)->first();
+        $desa = Desa::where('nama_desa', $nama_desa)->first();
 
-        $pariwisata = Desa::join('pariwisata_desas','desa_id','=','desas.id')
-                            ->where('desas.nama_desa', $pariwisata_id->nama_desa)
+        $pariwisatas = Desa::join('pariwisata_desas','desa_id','=','desas.id')
+                            ->where('desas.nama_desa', $desa->nama_desa)
                             ->select([
                                 'desas.foto as desa_foto',
                                 'desas.nama_desa',
@@ -29,10 +29,9 @@ class PariwisataDesaController extends Controller
                                 'pariwisata_desas.foto as pariwisata_foto',
                                 'pariwisata_desas.nama_wisata',
                                 'pariwisata_desas.deskripsi',
-                            ])->get();
-    
-        return view('pariwisataDesa.pariwisata', ['data' => $pariwisata]);
-    }
+                            ])->paginate();
+        
+        return view('pariwisataDesa.pariwisata', compact('desa', 'pariwisatas'));
 
-    
+    }
 }
