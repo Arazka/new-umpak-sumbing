@@ -41,7 +41,7 @@
               @if ($data != null)
               @foreach ($data as $key => $berita)
               <tr>
-                <td>{{ $key+1 }}</td>
+                <td>{{ $data->firstItem() + $key }}</td>
                 <td><img src="{{ asset('storage/' . $berita->foto) }}" alt="" style="width: 8rem"></td>
                 <td>{{ $berita->judul }}</td>
                 <td>{!! Str::limit($berita->deskripsi, 170) !!}</td>
@@ -65,7 +65,14 @@
             </tbody>
           </table>
         </div>
-        {{ $data->links('pagination::bootstrap-4') }}
+        <div class="d-flex justify-content-between align-items-cenet">
+          <div class="showing">
+            Showing {{ $data->firstItem() }} to {{ $data->lastItem() }} of {{ $data->total() }} entries
+          </div>
+          <div class="paginate">
+            {{ $data->links('pagination::bootstrap-4') }}
+          </div>
+        </div>
     </div>
     </div>
 </div>

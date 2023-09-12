@@ -41,7 +41,7 @@
               @if ($data != null)
               @foreach ($data as $key => $profil)
               <tr>
-                <td>{{ $key+1 }}</td>
+                <td>{{ $key + 1 }}</td>
                 <td>{!! Str::limit($profil->sejarah, 170) !!}</td>
                 <td>{!! Str::limit($profil->misi, 170) !!}</td>
                 <td>{!! Str::limit($profil->visi, 170) !!}</td>

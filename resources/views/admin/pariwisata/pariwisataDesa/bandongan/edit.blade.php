@@ -30,6 +30,16 @@
       <form method="POST" action="{{ url("/admin/wisata-bandongan/$bandongan->id") }}" enctype="multipart/form-data">
         @csrf @method('PATCH')
                 <div class="card-body">
+                    {{-- <div class="form-group">
+                      <label for="exampleInputJK">Nama Desa</label>
+                      <select class="form-control" name="desa_id" id="desa_id" required>
+                          @foreach ($desa as $desas)
+                              <option value="{{ $desas->id }}" @if ($desas->id == $bandongan->desa_id)
+                                  selected=""
+                              @endif>{{ $desas->nama_desa }}</option>
+                          @endforeach
+                      </select>
+                    </div> --}}
                     <div class="mb-3">
                         <label for="foto" class="form-label">Upload foto</label>
                         <img src="{{ url(asset('storage/'.$bandongan->foto)) }}" class="img-preview img-fluid col-sm-3 mb-3 d-block">
@@ -41,9 +51,9 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="judul">Nama Pariwisata</label>
-                        <input type="text" class="form-control" name="judul" id="judul" placeholder="Nama Pariwisata" value="{{ old('judul', $bandongan->judul) }}" required>
-                        @error('judul')
+                        <label for="nama_wisata">Nama Pariwisata</label>
+                        <input type="text" class="form-control" name="nama_wisata" id="nama_wisata" placeholder="Nama Pariwisata" value="{{ old('nama_wisata', $bandongan->nama_wisata) }}" required>
+                        @error('nama_wisata')
                         <span class="text-danger">
                           {{ $message }}
                         </span>

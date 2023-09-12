@@ -10,6 +10,10 @@ use App\Http\Controllers\Admin\DesaController;
 use App\Http\Controllers\Admin\Beranda\BeritaController;
 use App\Http\Controllers\Admin\Beranda\ProfileUmpakSumbingController;
 
+use App\Http\Controllers\Admin\PariwisataKawasan\KawasanController;
+use App\Http\Controllers\Admin\PariwisataKawasan\AgrowisataController;
+use App\Http\Controllers\Admin\PariwisataKawasan\PanoramaController;
+
 use App\Http\Controllers\Admin\PariwisataDesa\BandonganController;
 use App\Http\Controllers\Admin\PariwisataDesa\RejosariController;
 use App\Http\Controllers\Admin\PariwisataDesa\GandusariController;
@@ -21,7 +25,7 @@ use App\Http\Controllers\Admin\PariwisataDesa\TrasanController;
 
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\WisataController;
+use App\Http\Controllers\PariwisataDesaController;
 use App\Http\Controllers\GetDesaController;
 
 /*
@@ -166,6 +170,39 @@ Route::middleware(['auth' => 'check'])->group(function () {
         Route::patch('/admin/wisata-trasan/{id}', [TrasanController::class, 'updated']);
         Route::delete('/admin/wisata-trasan/{id}', [TrasanController::class, 'destroy']);
     });
+
+    // ===== data kawasan =====
+    Route::name('kawasan')->group(function () {
+        Route::get('/admin/kawasan', [KawasanController::class, 'index']);
+        Route::get('/admin/view-kawasan', [KawasanController::class, 'view']);
+        Route::get('/admin/kawasan/create', [KawasanController::class, 'create']);
+        Route::post('/admin/kawasan', [KawasanController::class, 'store']);
+        Route::get('/admin/kawasan/{id}/edit', [KawasanController::class, 'edit']);
+        Route::patch('/admin/kawasan/{id}', [KawasanController::class, 'updated']);
+        Route::delete('/admin/kawasan/{id}', [KawasanController::class, 'destroy']);
+    });
+
+    // ===== agrowisata =====
+    Route::name('agrowisata')->group(function () {
+        Route::get('/admin/wisata-kawasan-agrowisata', [AgrowisataController::class, 'index']);
+        Route::get('/admin/view-wisata-kawasan-agrowisata', [AgrowisataController::class, 'view']);
+        Route::get('/admin/wisata-kawasan-agrowisata/create', [AgrowisataController::class, 'create']);
+        Route::post('/admin/wisata-kawasan-agrowisata', [AgrowisataController::class, 'store']);
+        Route::get('/admin/wisata-kawasan-agrowisata/{id}/edit', [AgrowisataController::class, 'edit']);
+        Route::patch('/admin/wisata-kawasan-agrowisata/{id}', [AgrowisataController::class, 'updated']);
+        Route::delete('/admin/wisata-kawasan-agrowisata/{id}', [AgrowisataController::class, 'destroy']);
+    });
+    
+    // ===== panorama =====
+    Route::name('panorama')->group(function () {
+        Route::get('/admin/wisata-kawasan-panorama', [PanoramaController::class, 'index']);
+        Route::get('/admin/view-wisata-kawasan-panorama', [PanoramaController::class, 'view']);
+        Route::get('/admin/wisata-kawasan-panorama/create', [PanoramaController::class, 'create']);
+        Route::post('/admin/wisata-kawasan-panorama', [PanoramaController::class, 'store']);
+        Route::get('/admin/wisata-kawasan-panorama/{id}/edit', [PanoramaController::class, 'edit']);
+        Route::patch('/admin/wisata-kawasan-panorama/{id}', [PanoramaController::class, 'updated']);
+        Route::delete('/admin/wisata-kawasan-panorama/{id}', [PanoramaController::class, 'destroy']);
+    });
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -175,16 +212,18 @@ Route::middleware(['guest'])->group(function () {
 
         // ===== Pariwisata =====
         // Route::get('/pariwisata', function () {return view('pariwisata/pariwisata');});
-        Route::get('/pariwisata', [WisataController::class, 'pariwisata']);
+        Route::get('/pariwisata', [PariwisataDesaController::class, 'desa']);
+        Route::get('/pariwisata/{nama_desa}', [PariwisataDesaController::class, 'pariwisata']);
+        // Route::get('/pariwisata/{nama_desa}', [PariwisataDesaController::class, 'pariwisataProfilDesa']);
 
         // pariwisata dan detail desa
-        Route::get('/pariwisata/desa-bandongan', [WisataController::class, 'bandongan']);
-        Route::get('/pariwisata/desa-rejosari', [WisataController::class, 'rejosari']);
-        Route::get('/pariwisata/desa-gandusari', [WisataController::class, 'gandusari']);
-        Route::get('/pariwisata/desa-kalegen', [WisataController::class, 'kalegen']);
-        Route::get('/pariwisata/desa-ngepanrejo', [WisataController::class, 'ngepanrejo']);
-        Route::get('/pariwisata/desa-sidorejo', [WisataController::class, 'sidorejo']);
-        Route::get('/pariwisata/desa-trasan', [WisataController::class, 'trasan']);
+        // Route::get('/pariwisata/desa-bandongan', [WisataController::class, 'bandongan']);
+        // Route::get('/pariwisata/desa-rejosari', [WisataController::class, 'rejosari']);
+        // Route::get('/pariwisata/desa-gandusari', [WisataController::class, 'gandusari']);
+        // Route::get('/pariwisata/desa-kalegen', [WisataController::class, 'kalegen']);
+        // Route::get('/pariwisata/desa-ngepanrejo', [WisataController::class, 'ngepanrejo']);
+        // Route::get('/pariwisata/desa-sidorejo', [WisataController::class, 'sidorejo']);
+        // Route::get('/pariwisata/desa-trasan', [WisataController::class, 'trasan']);
 
         Route::get('/produk-unggulan', function () {return view('produk_unggulan/produk_unggulan');});
 

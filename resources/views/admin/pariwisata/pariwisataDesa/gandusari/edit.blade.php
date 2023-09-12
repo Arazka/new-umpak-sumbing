@@ -41,9 +41,9 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="judul">Nama Pariwisata</label>
-                        <input type="text" class="form-control" name="judul" id="judul" placeholder="Nama Pariwisata" value="{{ old('judul', $gandusari->judul) }}" required>
-                        @error('judul')
+                        <label for="nama_wisata">Nama Pariwisata</label>
+                        <input type="text" class="form-control" name="nama_wisata" id="nama_wisata" placeholder="Nama Pariwisata" value="{{ old('nama_wisata', $gandusari->nama_wisata) }}" required>
+                        @error('nama_wisata')
                         <span class="text-danger">
                           {{ $message }}
                         </span>

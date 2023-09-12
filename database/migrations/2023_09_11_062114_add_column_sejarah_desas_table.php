@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrasansTable extends Migration
+class AddColumnSejarahDesasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateTrasansTable extends Migration
      */
     public function up()
     {
-        Schema::create('trasans', function (Blueprint $table) {
-            $table->id();
-            $table->string('foto');
-            $table->string('judul');
-            $table->text('deskripsi');
-            $table->timestamps();
+        Schema::table('desas', function (Blueprint $table) {
+            $table->text('sejarah')->after('nama_desa');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateTrasansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trasans');
+        Schema::table('desas', function (Blueprint $table) {
+            $table->dropColumn('sejarah');
+        });
     }
 }

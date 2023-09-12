@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKalegensTable extends Migration
+class CreatePariwisataDesasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateKalegensTable extends Migration
      */
     public function up()
     {
-        Schema::create('kalegens', function (Blueprint $table) {
+        Schema::create('pariwisata_desas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('desa_id');
+            $table->foreign('desa_id')->references('id')->on('desas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('foto');
-            $table->string('judul');
+            $table->string('nama_wisata');
             $table->text('deskripsi');
             $table->timestamps();
         });
@@ -29,6 +31,6 @@ class CreateKalegensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kalegens');
+        Schema::dropIfExists('pariwisata_desas');
     }
 }

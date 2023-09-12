@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin\PariwisataDesa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Ngepanrejo;
+use App\Models\PariwisataDesa;
+use App\Models\Desa;
 use App\Http\Requests\WisataRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
@@ -13,9 +14,16 @@ class NgepanrejoController extends Controller
 {
     public function index(Request $request)
     {
-        // $this->authorize('admin');
-
-        $ngepanrejo = Ngepanrejo::orderBy('created_at','DESC')->paginate(3);
+        $ngepanrejo = PariwisataDesa::join('desas','desas.id', '=', 'pariwisata_desas.desa_id')
+                                    ->where('desas.nama_desa', '=', "Desa Ngepanrejo")
+                                    ->select([
+                                        'pariwisata_desas.id',
+                                        'pariwisata_desas.foto',
+                                        'pariwisata_desas.nama_wisata',
+                                        'pariwisata_desas.deskripsi',
+                                    ])
+                                    ->orderBy('pariwisata_desas.created_at', 'DESC')
+                                    ->paginate(3);
 
         return view('admin.pariwisata.pariwisataDesa.ngepanrejo.index', ['data' => $ngepanrejo]);
     }
@@ -24,16 +32,16 @@ class NgepanrejoController extends Controller
     {
         // $this->authorize('admin');
 
-        $ngepanrejo = Ngepanrejo::orderBy('created_at','DESC')->paginate();
+        $ngepanrejo = PariwisataDesa::orderBy('created_at','DESC')->paginate();
 
         return view('admin.pariwisata.pariwisataDesa.ngepanrejo.view', ['data' => $ngepanrejo]);
     }
 
     public function create()
     {
-        // $this->authorize('admin');
+        $desa = Desa::all();
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataDesa.ngepanrejo.create');
+            return view('admin.pariwisata.pariwisataDesa.ngepanrejo.create', compact('desa'));
         }
     
         return view('admin.404');
@@ -44,9 +52,10 @@ class NgepanrejoController extends Controller
     {
         $this->authorize('admin');
 
-        $ngepanrejo = Ngepanrejo::create([
-            'foto' => $request->file('foto')->store('pariwisata'),
-            'judul' => $request->judul,
+        $ngepanrejo = PariwisataDesa::create([
+            'desa_id' => $request->desa_id,
+            'foto' => $request->file('foto')->store('pariwisata_desa'),
+            'nama_wisata' => $request->nama_wisata,
             'deskripsi' => $request->deskripsi,
         ]);
 
@@ -59,15 +68,15 @@ class NgepanrejoController extends Controller
 
     public function show($id)
     {
-        $ngepanrejo = Ngepanrejo::find($id);
+        $ngepanrejo = PariwisataDesa::find($id);
     }
 
     public function edit($id)
     {
-        // $this->authorize('admin');
-        $ngepanrejo = Ngepanrejo::find($id);
+        $desa = Desa::all();
+        $ngepanrejo = PariwisataDesa::find($id);
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataDesa.ngepanrejo.edit', compact('ngepanrejo'));
+            return view('admin.pariwisata.pariwisataDesa.ngepanrejo.edit', compact('ngepanrejo', 'desa'));
         }
     
         return view('admin.404');
@@ -78,7 +87,7 @@ class NgepanrejoController extends Controller
     {
         $this->authorize('admin');
 
-        $ngepanrejo = Ngepanrejo::find($id);
+        $ngepanrejo = PariwisataDesa::find($id);
 
         if ($request->hasFile('foto')) {
             if ($ngepanrejo->foto != null) {
@@ -86,13 +95,13 @@ class NgepanrejoController extends Controller
             }
             
             $ngepanrejo->update([
-                'foto' => $request->file('foto')->store('pariwisata'),
-                'judul' => $request->judul,
+                'foto' => $request->file('foto')->store('pariwisata_desa'),
+                'nama_wisata' => $request->nama_wisata,
                 'deskripsi' => $request->deskripsi,
             ]);
         } else {
             $ngepanrejo->update([
-                'judul' => $request->judul,
+                'nama_wisata' => $request->nama_wisata,
                 'deskripsi' => $request->deskripsi,
             ]);
         }
@@ -107,7 +116,7 @@ class NgepanrejoController extends Controller
     public function destroy($id)
     {
         $this->authorize('admin');
-        $ngepanrejo = Ngepanrejo::find($id);
+        $ngepanrejo = PariwisataDesa::find($id);
 
         if($ngepanrejo) {
             if($ngepanrejo->foto != null) {

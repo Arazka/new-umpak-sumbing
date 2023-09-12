@@ -24,8 +24,9 @@ class WisataRequest extends FormRequest
     public function rules()
     {
         return [
+            'desa_id' => 'string',
             'foto' => 'file|max:5120',
-            'judul' => 'required|string',
+            'nama_wisata' => 'required|string',
             'deskripsi' => 'required',
         ];
     }

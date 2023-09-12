@@ -41,8 +41,8 @@
               @if ($data != null)
               @foreach ($data as $key => $desa)
               <tr>
-                <td>{{ $key+1 }}</td>
-                <td><img src="{{ asset('storage/' . $desa->foto) }}" alt="" style="width: 8rem"></td>
+                <td>{{ $data->firstItem() + $key }}</td>
+                <td><img src="{{ asset('storage/' . $desa->foto) }}" alt="" style="width: 8rem;"></td>
                 <td>{{ $desa->nama_desa }}</td>
                 <td>{!! Str::limit($desa->sejarah, 170) !!}</td>
                 @can ('admin')
@@ -65,7 +65,14 @@
             </tbody>
           </table>
         </div>
-        {{ $data->links('pagination::bootstrap-4') }}
+        <div class="d-flex justify-content-between align-items-cenet">
+          <div class="showing">
+            Showing {{ $data->firstItem() }} to {{ $data->lastItem() }} of {{ $data->total() }} entries
+          </div>
+          <div class="paginate">
+            {{ $data->links('pagination::bootstrap-4') }}
+          </div>
+        </div>
     </div>
     </div>
 </div>

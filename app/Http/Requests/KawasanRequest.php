@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BandonganRequest extends FormRequest
+class KawasanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,7 @@ class BandonganRequest extends FormRequest
     {
         return [
             'foto' => 'file|max:5120',
-            'judul' => 'required|string',
-            'deskripsi' => 'required',
+            'nama_kawasan' => 'required|string',
         ];
     }
 
@@ -34,6 +33,7 @@ class BandonganRequest extends FormRequest
     {
         return [
             'required' => 'isian :attribute tidak memenuhi',
+            'foto.max' => 'Ukuran foto harus lebih kecil dari 5 MB',
         ];
     }
 }

@@ -32,8 +32,8 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="foto" class="form-label">Upload foto</label>
-                        <img class="img-preview img-fluid col-sm-3 mb-3">
-                        <input class="form-control" type="file" id="foto" name="foto" onchange="previewImage()" required>
+                        <img class="img-preview img-fluid col-sm-3 mb-3" id="img-preview-foto">
+                        <input class="form-control" type="file" id="foto" name="foto" onchange="previewImage('foto')" required>
                         @error('foto')
                         <span class="text-danger">
                           {{ $message }}
@@ -49,15 +49,6 @@
                         </span>
                         @enderror
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="exampleInputPassword1">Deskripsi</label>
-                        <textarea type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" rows="7" value="{{ old('deskripsi') }}" required></textarea>
-                        @error('deskripsi')
-                        <span class="text-danger">
-                          {{ $message }}
-                        </span>
-                        @enderror
-                    </div> --}}
                     <div class="form-group">
                         <label for="exampleInputPassword1">Sejarah</label>
                         <input id="sejarah" type="hidden" name="sejarah" value="{{ old('sejarah') }}" required>
@@ -67,6 +58,16 @@
                           {{ $message }}
                         </span>
                         @enderror
+                    </div>
+                    <div class="mb-3">
+                      <label for="foto_kawasan" class="form-label">Upload foto kawasan desa</label>
+                      <img class="img-preview-foto_kawasan img-fluid col-sm-3 mb-3" id="img-preview-foto_kawasan">
+                      <input class="form-control" type="file" id="foto_kawasan" name="foto_kawasan" onchange="previewImage('foto_kawasan')" required>
+                      @error('foto_kawasan')
+                      <span class="text-danger">
+                        {{ $message }}
+                      </span>
+                      @enderror
                     </div>
                 </div>
                 <div class="card-body">
@@ -78,9 +79,9 @@
 </div>
 
 <script>
-function previewImage() {
-    const image = document.querySelector('#foto');
-    const imgPreview = document.querySelector('.img-preview');
+function previewImage(inputId) {
+    const image = document.querySelector(`#${inputId}`);
+    const imgPreview = document.querySelector(`#img-preview-${inputId}`);
 
     imgPreview.style.display = 'block';
 

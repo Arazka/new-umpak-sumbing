@@ -13,7 +13,7 @@ class DesaController extends Controller
 {
     Public function index(Request $request)
     {
-        $desa = Desa::orderBy('created_at', 'ASC')->paginate(3);
+        $desa = Desa::orderBy('created_at', 'DESC')->paginate(3);
 
         return view('admin.desa.index', ['data' => $desa]);
     }
@@ -33,6 +33,7 @@ class DesaController extends Controller
             'foto' => $request->file('foto')->store('desa'),
             'nama_desa' => $request->nama_desa,
             'sejarah' => $request->sejarah,
+            'foto_kawasan' => $request->file('foto_kawasan')->store('desa_geo_map'),
         ]);
 
         if ($desa) {
@@ -63,25 +64,31 @@ class DesaController extends Controller
     {
         $desa = Desa::find($id);
 
-        // Periksa apakah ada file yang diunggah
         if ($request->hasFile('foto')) {
             if ($desa->foto != null) {
                 Storage::delete($desa->foto);
             }
-            
+
             $desa->update([
                 'foto' => $request->file('foto')->store('desa'),
-                'nama_desa' => $request->nama_desa,
-                'sejarah' => $request->sejarah,
-            ]);
-        } else {
-            // Jika tidak ada file baru yang diunggah, hanya update data lainnya
-            $desa->update([
-                'nama_desa' => $request->nama_desa,
-                'sejarah' => $request->sejarah,
             ]);
         }
-    
+
+        if ($request->hasFile('foto_kawasan')) {
+            if ($desa->foto_kawasan != null) {
+                Storage::delete($desa->foto_kawasan);
+            }
+
+            $desa->update([
+                'foto_kawasan' => $request->file('foto_kawasan')->store('desa_geo_map'),
+            ]);
+        }
+
+        $desa->update([
+            'nama_desa' => $request->nama_desa,
+            'sejarah' => $request->sejarah,
+        ]);
+
         if ($desa->wasChanged()) {
             return redirect('/admin/desa')->with('success', 'Data desa berhasil diupdate!');
         } else {

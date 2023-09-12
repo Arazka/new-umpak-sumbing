@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\PariwisataDesa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Bandongan;
-// use App\Http\Requests\BandonganRequest;
+use App\Models\PariwisataDesa;
+use App\Models\Desa;
 use App\Http\Requests\WisataRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
@@ -14,9 +14,16 @@ class BandonganController extends Controller
 {
     public function index(Request $request)
     {
-        // $this->authorize('admin');
-
-        $bandongan = Bandongan::orderBy('created_at','DESC')->paginate(3);
+        $bandongan = PariwisataDesa::join('desas','desas.id', '=', 'pariwisata_desas.desa_id')
+                                    ->where('desas.nama_desa', '=', "Desa Bandongan")
+                                    ->select([
+                                        'pariwisata_desas.id',
+                                        'pariwisata_desas.foto',
+                                        'pariwisata_desas.nama_wisata',
+                                        'pariwisata_desas.deskripsi',
+                                    ])
+                                    ->orderBy('pariwisata_desas.created_at', 'DESC')
+                                    ->paginate(3);
 
         return view('admin.pariwisata.pariwisataDesa.bandongan.index', ['data' => $bandongan]);
     }
@@ -25,16 +32,17 @@ class BandonganController extends Controller
     {
         // $this->authorize('admin');
 
-        $bandongan = Bandongan::orderBy('created_at','DESC')->paginate();
+        $bandongan = PariwisataDesa::orderBy('created_at','DESC')->paginate();
 
         return view('admin.pariwisata.pariwisataDesa.bandongan.view', ['data' => $bandongan]);
     }
 
     public function create()
     {
-        // $this->authorize('admin');
+        
+        $desa = Desa::all();
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataDesa.bandongan.create');
+            return view('admin.pariwisata.pariwisataDesa.bandongan.create', compact('desa'));
         }
     
         return view('admin.404');
@@ -45,9 +53,10 @@ class BandonganController extends Controller
     {
         $this->authorize('admin');
 
-        $bandongan = Bandongan::create([
-            'foto' => $request->file('foto')->store('pariwisata'),
-            'judul' => $request->judul,
+        $bandongan = PariwisataDesa::create([
+            'desa_id' => $request->desa_id,
+            'foto' => $request->file('foto')->store('pariwisata_desa'),
+            'nama_wisata' => $request->nama_wisata,
             'deskripsi' => $request->deskripsi,
         ]);
 
@@ -60,16 +69,17 @@ class BandonganController extends Controller
 
     public function show($id)
     {
-        $bandongan = Bandongan::find($id);
+        $bandongan = PariwisataDesa::find($id);
     }
 
     public function edit($id)
     {
         // $this->authorize('admin');
-
-        $bandongan = Bandongan::find($id);
+        $desa = Desa::all();
+        $bandongan = PariwisataDesa::find($id);
+        // $bandongan = PariwisataDesa::where('nama_wisata', $nama_wisata)->first();
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataDesa.bandongan.edit', compact('bandongan'));
+            return view('admin.pariwisata.pariwisataDesa.bandongan.edit', compact('bandongan', 'desa'));
         }
     
         return view('admin.404');
@@ -80,7 +90,8 @@ class BandonganController extends Controller
     {
         $this->authorize('admin');
 
-        $bandongan = Bandongan::find($id);
+        $bandongan = PariwisataDesa::find($id);
+        // $bandongan = PariwisataDesa::where('nama_wisata', $nama_wisata)->first();
 
         // Periksa apakah ada file yang diunggah
         if ($request->hasFile('foto')) {
@@ -89,14 +100,14 @@ class BandonganController extends Controller
             }
             
             $bandongan->update([
-                'foto' => $request->file('foto')->store('pariwisata'),
-                'judul' => $request->judul,
+                'foto' => $request->file('foto')->store('pariwisata_desa'),
+                'nama_wisata' => $request->nama_wisata,
                 'deskripsi' => $request->deskripsi,
             ]);
         } else {
             // Jika tidak ada file baru yang diunggah, hanya update data lainnya
             $bandongan->update([
-                'judul' => $request->judul,
+                'nama_wisata' => $request->nama_wisata,
                 'deskripsi' => $request->deskripsi,
             ]);
         }
@@ -111,7 +122,7 @@ class BandonganController extends Controller
     public function destroy($id)
     {
         $this->authorize('admin');
-        $bandongan = Bandongan::find($id);
+        $bandongan = PariwisataDesa::find($id);
 
         if($bandongan) {
             if($bandongan->foto != null) {

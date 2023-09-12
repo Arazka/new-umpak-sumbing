@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin\PariwisataDesa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Gandusari;
-use App\Http\Requests\GandusariRequest;
+use App\Models\PariwisataDesa;
+use App\Models\Desa;
+use App\Http\Requests\WisataRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,9 +14,16 @@ class GandusariController extends Controller
 {
     public function index(Request $request)
     {
-        // $this->authorize('admin');
-
-        $gandusari = Gandusari::orderBy('created_at','DESC')->paginate(3);
+        $gandusari = PariwisataDesa::join('desas','desas.id', '=', 'pariwisata_desas.desa_id')
+                                    ->where('desas.nama_desa', '=', "Desa Gandusari")
+                                    ->select([
+                                        'pariwisata_desas.id',
+                                        'pariwisata_desas.foto',
+                                        'pariwisata_desas.nama_wisata',
+                                        'pariwisata_desas.deskripsi',
+                                    ])
+                                    ->orderBy('pariwisata_desas.created_at', 'DESC')
+                                    ->paginate(3);
 
         return view('admin.pariwisata.pariwisataDesa.gandusari.index', ['data' => $gandusari]);
     }
@@ -24,27 +32,29 @@ class GandusariController extends Controller
     {
         // $this->authorize('admin');
 
-        $gandusari = Gandusari::orderBy('created_at','DESC')->paginate();
+        $gandusari = PariwisataDesa::orderBy('created_at','DESC')->paginate();
 
         return view('admin.pariwisata.pariwisataDesa.gandusari.view', ['data' => $gandusari]);
     }
 
     public function create()
     {
+        $desa = Desa::all();
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataDesa.gandusari.create');
+            return view('admin.pariwisata.pariwisataDesa.gandusari.create', compact('desa'));
         }
     
         return view('admin.404');
     }
 
-    public function store(GandusariRequest $request)
+    public function store(WisataRequest $request)
     {
         $this->authorize('admin');
 
-        $gandusari = Gandusari::create([
-            'foto' => $request->file('foto')->store('pariwisata'),
-            'judul' => $request->judul,
+        $gandusari = PariwisataDesa::create([
+            'desa_id' => $request->desa_id,
+            'foto' => $request->file('foto')->store('pariwisata_desa'),
+            'nama_wisata' => $request->nama_wisata,
             'deskripsi' => $request->deskripsi,
         ]);
 
@@ -57,27 +67,27 @@ class GandusariController extends Controller
 
     public function show($id)
     {
-        $gandusari = Gandusari::find($id);
+        $gandusari = PariwisataDesa::find($id);
     }
 
     public function edit($id)
     {
         // $this->authorize('admin');
-
-        $gandusari = Gandusari::find($id);
+        $desa = Desa::all();
+        $gandusari = PariwisataDesa::find($id);
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataDesa.gandusari.edit', compact('gandusari'));
+            return view('admin.pariwisata.pariwisataDesa.gandusari.edit', compact('gandusari', 'desa'));
         }
     
         return view('admin.404');
 
     }
 
-    public function updated(GandusariRequest $request, $id)
+    public function updated(WisataRequest $request, $id)
     {
         $this->authorize('admin');
 
-        $gandusari = Gandusari::find($id);
+        $gandusari = PariwisataDesa::find($id);
 
         // Periksa apakah ada file yang diunggah
         if ($request->hasFile('foto')) {
@@ -86,14 +96,14 @@ class GandusariController extends Controller
             }
             
             $gandusari->update([
-                'foto' => $request->file('foto')->store('pariwisata'),
-                'judul' => $request->judul,
+                'foto' => $request->file('foto')->store('pariwisata_desa'),
+                'nama_wisata' => $request->nama_wisata,
                 'deskripsi' => $request->deskripsi,
             ]);
         } else {
             // Jika tidak ada file baru yang diunggah, hanya update data lainnya
             $gandusari->update([
-                'judul' => $request->judul,
+                'nama_wisata' => $request->nama_wisata,
                 'deskripsi' => $request->deskripsi,
             ]);
         }
@@ -108,7 +118,7 @@ class GandusariController extends Controller
     public function destroy($id)
     {
         $this->authorize('admin');
-        $gandusari = Gandusari::find($id);
+        $gandusari = PariwisataDesa::find($id);
 
         if($gandusari) {
             if($gandusari->foto != null) {

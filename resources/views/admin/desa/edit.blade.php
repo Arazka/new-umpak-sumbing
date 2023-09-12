@@ -32,8 +32,8 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="foto" class="form-label">Upload foto</label>
-                        <img src="{{ url(asset('storage/'.$desa->foto)) }}" class="img-preview img-fluid col-sm-3 mb-3 d-block">
-                        <input class="form-control" type="file" id="foto" name="foto" onchange="previewImage()">
+                        <img src="{{ url(asset('storage/'.$desa->foto)) }}" class="img-preview img-fluid col-sm-3 mb-3 d-block" id="img-preview-foto">
+                        <input class="form-control" type="file" id="foto" name="foto" onchange="previewImage('foto')">
                         @error('foto')
                         <span class="text-danger">
                           {{ $message }}
@@ -49,15 +49,6 @@
                         </span>
                         @enderror
                     </div>
-                    {{-- <div class="form-group">
-                      <label for="deskripsi">Deskripsi</label>
-                      <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" rows="7" required>{{ old('deskripsi', $desa->deskripsi) }}</textarea>
-                      @error('deskripsi')
-                      <span class="text-danger">
-                          {{ $message }}
-                      </span>
-                      @enderror
-                    </div> --}}
                     <div class="form-group">
                       <label for="sejarah">Sejarah</label>
                       <input id="sejarah" type="hidden" name="sejarah" value="{{ old('sejarah', $desa->sejarah) }}" required>
@@ -68,6 +59,16 @@
                       </span>
                       @enderror
                     </div>
+                    <div class="mb-3">
+                      <label for="foto_kawasan" class="form-label">Upload foto kawasan</label>
+                      <img src="{{ url(asset('storage/'.$desa->foto_kawasan)) }}" class="img-preview img-fluid col-sm-3 mb-3 d-block" id="img-preview-foto_kawasan">
+                      <input class="form-control" type="file" id="foto_kawasan" name="foto_kawasan" onchange="previewImage('foto_kawasan')">
+                      @error('foto_kawasan')
+                      <span class="text-danger">
+                        {{ $message }}
+                      </span>
+                      @enderror
+                  </div>
                   
                 </div>
                 <div class="card-body">
@@ -79,9 +80,9 @@
 </div>
 
 <script>
-function previewImage() {
-    const image = document.querySelector('#foto');
-    const imgPreview = document.querySelector('.img-preview');
+function previewImage(inputId) {
+    const image = document.querySelector(`#${inputId}`);
+    const imgPreview = document.querySelector(`#img-preview-${inputId}`);
 
     imgPreview.style.display = 'block';
 
@@ -92,5 +93,9 @@ function previewImage() {
         imgPreview.src = oFREvent.target.result;
     }
 }
+
+document.addEventListener('trix-file-accept', function(e) {
+  e.preventDefault();
+})
 </script>
 @endsection

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGandusarisTable extends Migration
+class CreateDesasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateGandusarisTable extends Migration
      */
     public function up()
     {
-        Schema::create('gandusaris', function (Blueprint $table) {
+        Schema::create('desas', function (Blueprint $table) {
             $table->id();
             $table->string('foto');
-            $table->string('judul');
-            $table->text('deskripsi');
+            $table->string('nama_desa');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateGandusarisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gandusaris');
+        Schema::dropIfExists('desas');
     }
 }

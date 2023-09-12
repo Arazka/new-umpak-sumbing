@@ -11,6 +11,11 @@ class Desa extends Model
 
     protected $table = 'desas';
     protected $fillable = [
-        'foto', 'nama_desa', 'sejarah'
+        'foto', 'nama_desa', 'sejarah', 'foto_kawasan'
     ];
+
+    public function pariwisata_desas()
+    {
+        return $this->hasMany(PariwisataDesa::class);
+    }
 }

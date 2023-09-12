@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin\PariwisataDesa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Kalegen;
+use App\Models\PariwisataDesa;
+use App\Models\Desa;
 use App\Http\Requests\WisataRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
@@ -13,9 +14,16 @@ class KalegenController extends Controller
 {
     public function index(Request $request)
     {
-        // $this->authorize('admin');
-
-        $kalegen = Kalegen::orderBy('created_at','DESC')->paginate(3);
+        $kalegen = PariwisataDesa::join('desas','desas.id', '=', 'pariwisata_desas.desa_id')
+                                    ->where('desas.nama_desa', '=', "Desa Kalegen")
+                                    ->select([
+                                        'pariwisata_desas.id',
+                                        'pariwisata_desas.foto',
+                                        'pariwisata_desas.nama_wisata',
+                                        'pariwisata_desas.deskripsi',
+                                    ])
+                                    ->orderBy('pariwisata_desas.created_at', 'DESC')
+                                    ->paginate(3);
 
         return view('admin.pariwisata.pariwisataDesa.kalegen.index', ['data' => $kalegen]);
     }
@@ -24,16 +32,16 @@ class KalegenController extends Controller
     {
         // $this->authorize('admin');
 
-        $kalegen = Kalegen::orderBy('created_at','DESC')->paginate();
+        $kalegen = PariwisataDesa::orderBy('created_at','DESC')->paginate();
 
         return view('admin.pariwisata.pariwisataDesa.kalegen.view', ['data' => $kalegen]);
     }
 
     public function create()
     {
-        // $this->authorize('admin');
+        $desa = Desa::all();
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataDesa.kalegen.create');
+            return view('admin.pariwisata.pariwisataDesa.kalegen.create', compact('desa'));
         }
     
         return view('admin.404');
@@ -44,9 +52,10 @@ class KalegenController extends Controller
     {
         $this->authorize('admin');
 
-        $kalegen = Kalegen::create([
-            'foto' => $request->file('foto')->store('pariwisata'),
-            'judul' => $request->judul,
+        $kalegen = PariwisataDesa::create([
+            'desa_id' => $request->desa_id,
+            'foto' => $request->file('foto')->store('pariwisata_desa'),
+            'nama_wisata' => $request->nama_wisata,
             'deskripsi' => $request->deskripsi,
         ]);
 
@@ -59,16 +68,16 @@ class KalegenController extends Controller
 
     public function show($id)
     {
-        $kalegen = Kalegen::find($id);
+        $kalegen = PariwisataDesa::find($id);
     }
 
     public function edit($id)
     {
         // $this->authorize('admin');
-
-        $kalegen = Kalegen::find($id);
+        $desa = Desa::all();
+        $kalegen = PariwisataDesa::find($id);
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataDesa.kalegen.edit', compact('kalegen'));
+            return view('admin.pariwisata.pariwisataDesa.kalegen.edit', compact('kalegen', 'desa'));
         }
     
         return view('admin.404');
@@ -79,7 +88,7 @@ class KalegenController extends Controller
     {
         $this->authorize('admin');
     
-        $kalegen = Kalegen::find($id);
+        $kalegen = PariwisataDesa::find($id);
 
         if ($request->hasFile('foto')) {
             if ($kalegen->foto != null) {
@@ -87,13 +96,13 @@ class KalegenController extends Controller
             }
             
             $kalegen->update([
-                'foto' => $request->file('foto')->store('pariwisata'),
-                'judul' => $request->judul,
+                'foto' => $request->file('foto')->store('pariwisata_desa'),
+                'nama_wisata' => $request->nama_wisata,
                 'deskripsi' => $request->deskripsi,
             ]);
         } else {
             $kalegen->update([
-                'judul' => $request->judul,
+                'nama_wisata' => $request->nama_wisata,
                 'deskripsi' => $request->deskripsi,
             ]);
         }
@@ -108,7 +117,7 @@ class KalegenController extends Controller
     public function destroy($id)
     {
         $this->authorize('admin');
-        $kalegen = Kalegen::find($id);
+        $kalegen = PariwisataDesa::find($id);
 
         if($kalegen) {
             if($kalegen->foto != null) {

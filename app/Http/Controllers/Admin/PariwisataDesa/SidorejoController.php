@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin\PariwisataDesa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Sidorejo;
+use App\Models\PariwisataDesa;
+use App\Models\Desa;
 use App\Http\Requests\WisataRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
@@ -13,9 +14,16 @@ class SidorejoController extends Controller
 {
     public function index(Request $request)
     {
-        // $this->authorize('admin');
-
-        $sidorejo = Sidorejo::orderBy('created_at','DESC')->paginate(3);
+        $sidorejo = PariwisataDesa::join('desas','desas.id', '=', 'pariwisata_desas.desa_id')
+                                    ->where('desas.nama_desa', '=', "Desa Sidorejo")
+                                    ->select([
+                                        'pariwisata_desas.id',
+                                        'pariwisata_desas.foto',
+                                        'pariwisata_desas.nama_wisata',
+                                        'pariwisata_desas.deskripsi',
+                                    ])
+                                    ->orderBy('pariwisata_desas.created_at', 'DESC')
+                                    ->paginate(3);
 
         return view('admin.pariwisata.pariwisataDesa.sidorejo.index', ['data' => $sidorejo]);
     }
@@ -24,16 +32,16 @@ class SidorejoController extends Controller
     {
         // $this->authorize('admin');
 
-        $sidorejo = Sidorejo::orderBy('created_at','ASC')->paginate();
+        $sidorejo = PariwisataDesa::orderBy('created_at','ASC')->paginate();
 
         return view('admin.pariwisata.pariwisataDesa.sidorejo.view', ['data' => $sidorejo]);
     }
 
     public function create()
     {
-        // $this->authorize('admin');
+        $desa = Desa::all();
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataDesa.sidorejo.create');
+            return view('admin.pariwisata.pariwisataDesa.sidorejo.create', compact('desa'));
         }
     
         return view('admin.404');
@@ -44,9 +52,10 @@ class SidorejoController extends Controller
     {
         $this->authorize('admin');
 
-        $sidorejo = Sidorejo::create([
-            'foto' => $request->file('foto')->store('pariwisata'),
-            'judul' => $request->judul,
+        $sidorejo = PariwisataDesa::create([
+            'desa_id' => $request->desa_id,
+            'foto' => $request->file('foto')->store('pariwisata_desa'),
+            'nama_wisata' => $request->nama_wisata,
             'deskripsi' => $request->deskripsi,
         ]);
 
@@ -59,15 +68,15 @@ class SidorejoController extends Controller
 
     public function show($id)
     {
-        $sidorejo = Sidorejo::find($id);
+        $sidorejo = PariwisataDesa::find($id);
     }
 
     public function edit($id)
     {
-        // $this->authorize('admin');
-        $sidorejo = Sidorejo::find($id);
+        $desa = Desa::all();
+        $sidorejo = PariwisataDesa::find($id);
         if (Gate::allows('admin')) {
-            return view('admin.pariwisata.pariwisataDesa.sidorejo.edit', compact('sidorejo'));
+            return view('admin.pariwisata.pariwisataDesa.sidorejo.edit', compact('sidorejo', 'desa'));
         }
     
         return view('admin.404');
@@ -78,7 +87,7 @@ class SidorejoController extends Controller
     {
         $this->authorize('admin');
 
-        $sidorejo = Sidorejo::find($id);
+        $sidorejo = PariwisataDesa::find($id);
 
         if ($request->hasFile('foto')) {
             if ($sidorejo->foto != null) {
@@ -86,13 +95,13 @@ class SidorejoController extends Controller
             }
             
             $sidorejo->update([
-                'foto' => $request->file('foto')->store('pariwisata'),
-                'judul' => $request->judul,
+                'foto' => $request->file('foto')->store('pariwisata_desa'),
+                'nama_wisata' => $request->nama_wisata,
                 'deskripsi' => $request->deskripsi,
             ]);
         } else {
             $sidorejo->update([
-                'judul' => $request->judul,
+                'nama_wisata' => $request->nama_wisata,
                 'deskripsi' => $request->deskripsi,
             ]);
         }
@@ -107,7 +116,7 @@ class SidorejoController extends Controller
     public function destroy($id)
     {
         $this->authorize('admin');
-        $sidorejo = Sidorejo::find($id);
+        $sidorejo = PariwisataDesa::find($id);
 
         if($sidorejo) {
             if($sidorejo->foto != null) {
