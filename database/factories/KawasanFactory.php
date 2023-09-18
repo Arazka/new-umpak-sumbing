@@ -15,7 +15,7 @@ class KawasanFactory extends Factory
     {
         $faker = $this->faker;
         return [
-            'foto' => $faker->imageUrl(),
+            'foto' => 'kawasan/test.jpg',
             'nama_kawasan' => $faker->unique()->city,
             'created_at' => now(),
             'updated_at' => now(),

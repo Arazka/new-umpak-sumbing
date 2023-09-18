@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Desa;
+use App\Models\PariwisataDesa;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Faker\Generator as Faker;
 
 class DesaFactory extends Factory
 {
@@ -13,7 +13,7 @@ class DesaFactory extends Factory
      *
      * @var string
      */
-    protected $model = Desa::class; // Specify the model class
+    protected $model = Desa::class;
 
     /**
      * Define the model's default state.
@@ -25,12 +25,24 @@ class DesaFactory extends Factory
         $faker = $this->faker;
 
         return [
-            'foto' => $faker->imageUrl(),
+            'foto' => 'desa/test.jpg',
             'nama_desa' => $faker->unique()->city,
             'sejarah' => $faker->paragraph(3),
-            'foto_kawasan' => $faker->imageUrl(),
+            'foto_kawasan' => 'desa_geo_map/test.png',
             'created_at' => now(),
             'updated_at' => now(),
         ];
+    }
+
+    /**
+     * Configure the model factory.
+     *
+     * @return $this
+     */
+    public function configure()
+    {
+        return $this->afterCreating(function (Desa $desa) {
+            PariwisataDesa::factory(3)->create(['desa_id' => $desa->id]);
+        });
     }
 }

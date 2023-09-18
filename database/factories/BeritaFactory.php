@@ -15,8 +15,8 @@ class BeritaFactory extends Factory
     {
         $faker = $this->faker;
         return [
-            'foto' => $faker->imageUrl(),
-            'judul' => $faker->title(),
+            'foto' => 'berita/test.jpg',
+            'judul' => $faker->unique()->sentence,
             'deskripsi' => $faker->paragraph(3),
             'created_at' => now(),
             'updated_at' => now(),

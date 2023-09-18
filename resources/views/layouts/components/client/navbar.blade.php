@@ -22,9 +22,18 @@
             <li class="nav-item">
               <a class="nav-link fs-6" aria-current="page" href="{{ url('/') }}">Beranda</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link fs-6" href="{{ url('/pariwisata') }}">Pariwisata</a>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Pariwisata </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="{{ url('/pariwisata-desa') }}">Pariwisata Desa</a></li>
+                <li><a class="dropdown-item" href="{{ url('/pariwisata-kawasan') }}">Pariwisata Kawasan</a></li>
+              </ul>
             </li>
+
+            {{-- <li class="nav-item">
+              <a class="nav-link fs-6" href="{{ url('/pariwisata') }}">Pariwisata</a>
+            </li> --}}
             <li class="nav-item">
               <a class="nav-link fs-6" href="{{ url('/produk-unggulan') }}">Produk Unggulan</a>
             </li>

@@ -224,8 +224,11 @@ Route::middleware(['guest'])->group(function () {
 
         // ===== Pariwisata =====
         // Route::get('/pariwisata', function () {return view('pariwisata/pariwisata');});
-        Route::get('/pariwisata', [PariwisataDesaController::class, 'desa']);
-        Route::get('/pariwisata/{nama_desa}', [PariwisataDesaController::class, 'pariwisata']);
+        Route::get('/pariwisata-desa', [PariwisataDesaController::class, 'desa']);
+        Route::get('/pariwisata-desa/{nama_desa}', [PariwisataDesaController::class, 'pariwisata']);
+
+        Route::get('/pariwisata-kawasan', [PariwisataDesaController::class, 'desa']);
+        Route::get('/pariwisata-kawasan/{nama_desa}', [PariwisataDesaController::class, 'pariwisata']);
 
         // pariwisata dan detail desa
         // Route::get('/pariwisata/desa-bandongan', [WisataController::class, 'bandongan']);
