@@ -32,8 +32,8 @@
             <img src="{{ asset('storage/'. $pariwisata->pariwisata_foto) }}" class="img-fluid my-3 w-100" alt="Blog Image" style="height: 20rem; object-fit: cover;">
             <h3 class="text-left">{{ $pariwisata->nama_wisata }}</h3>
             <p>{!! $pariwisata->deskripsi !!}</p>
-            <br>
           </section>
+          <br>
           @endforeach
         </section>
       </div>
