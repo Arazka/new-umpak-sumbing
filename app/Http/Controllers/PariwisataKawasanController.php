@@ -12,7 +12,7 @@ class PariwisataKawasanController extends Controller
     {
         $kawasan = Kawasan::paginate();
 
-        return view('pariwisata.pariwisata-kawasan', ['data' => $kawasan]);
+        return view('pariwisata.pariwisata_kawasan', ['data' => $kawasan]);
     }
 
     public function pariwisata($nama_kawasan)
@@ -28,7 +28,7 @@ class PariwisataKawasanController extends Controller
                                 'pariwisata_kawasans.deskripsi',
                             ])->paginate();
         
-        return view('pariwisata.halaman-kawasan', compact('kawasan', 'pariwisatas'));
+        return view('pariwisata.halaman_kawasan', compact('kawasan', 'pariwisatas'));
 
     }
 }
