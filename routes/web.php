@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\PariwisataDesa\TrasanController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PariwisataDesaController;
+use App\Http\Controllers\PariwisataKawasanController;
 use App\Http\Controllers\GetDesaController;
 
 /*
@@ -225,7 +226,11 @@ Route::middleware(['guest'])->group(function () {
         // ===== Pariwisata =====
         // Route::get('/pariwisata', function () {return view('pariwisata/pariwisata');});
         Route::get('/pariwisata-desa', [PariwisataDesaController::class, 'desa']);
+        Route::get('/pariwisata-kawasan', [PariwisataKawasanController::class, 'kawasan']);
         Route::get('/pariwisata-desa/{nama_desa}', [PariwisataDesaController::class, 'pariwisata']);
+        Route::get('/pariwisata-kawasan/{nama_kawasan}', [PariwisataKawasanController::class, 'pariwisata']);
+        // Route::get('/pariwisata-kawasan/{nama_kawasan}', [PariwisataKawasanController::class, 'pariwisata']);
+
 
         Route::get('/pariwisata-kawasan', function () {
             return view('pariwisata.pariwisata_kawasan');
