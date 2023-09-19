@@ -12,7 +12,7 @@ class PariwisataDesaController extends Controller
     {
         $desa = Desa::paginate();
 
-        return view('pariwisata.pariwisata-desa', ['data' => $desa]);
+        return view('pariwisata.pariwisata_desa', ['data' => $desa]);
     }
 
     public function pariwisata($nama_desa)
@@ -31,7 +31,7 @@ class PariwisataDesaController extends Controller
                                 'pariwisata_desas.deskripsi',
                             ])->paginate();
         
-        return view('pariwisata.halaman-desa', compact('desa', 'pariwisatas'));
+        return view('pariwisata.halaman_desa', compact('desa', 'pariwisatas'));
 
     }
 }

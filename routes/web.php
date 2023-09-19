@@ -227,15 +227,18 @@ Route::middleware(['guest'])->group(function () {
         Route::get('/pariwisata-desa', [PariwisataDesaController::class, 'desa']);
         Route::get('/pariwisata-desa/{nama_desa}', [PariwisataDesaController::class, 'pariwisata']);
 
-        //Route::get('/pariwisata-kawasan', function () {return view('pariwisata/pariwisata-kawasan');});
-        
         Route::get('/pariwisata-kawasan', function () {
-            return view('pariwisata.pariwisata-kawasan');
+            return view('pariwisata.pariwisata_kawasan');
         })->name('pariwisata-kawasan');
 
         Route::get('/pariwisata-kawasan/halaman-kawasan', function () {
-            return view('pariwisata.halaman-kawasan');
+            return view('pariwisata.halaman_kawasan');
         })->name('pariwisata-kawasan');
+
+        // Route::get('/produk-unggulan-desa/produk-unggulan-halaman', function () {
+        //     return view('pariwisata.halaman_kawasan');
+        // })->name('pariwisata-kawasan');
+
 
         // pariwisata dan detail desa
         // Route::get('/pariwisata/desa-bandongan', [WisataController::class, 'bandongan']);
@@ -246,7 +249,12 @@ Route::middleware(['guest'])->group(function () {
         // Route::get('/pariwisata/desa-sidorejo', [WisataController::class, 'sidorejo']);
         // Route::get('/pariwisata/desa-trasan', [WisataController::class, 'trasan']);
 
-        Route::get('/produk-unggulan', function () {return view('produk_unggulan/produk_unggulan');});
+        // produk unggulan
+        Route::get('/produk-unggulan-desa', function () {return view('produk_unggulan/produk_unggulan_desa');});
+        
+        Route::get('/produk-unggulan-kawasan', function () {
+            return view('produk_unggulan.produk_unggulan_kawasan');
+        })->name('produk-unggulan-kawasan');
 
         // bkad
         Route::get('/bkad/profil-lembaga', function () {return view('bkad/profilLembaga');});

@@ -34,8 +34,12 @@
             {{-- <li class="nav-item">
               <a class="nav-link fs-6" href="{{ url('/pariwisata') }}">Pariwisata</a>
             </li> --}}
-            <li class="nav-item">
-              <a class="nav-link fs-6" href="{{ url('/produk-unggulan') }}">Produk Unggulan</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Produk Unggulan </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="{{ url('/produk-unggulan-desa') }}">Produk Unggulan Desa</a></li>
+                <li><a class="dropdown-item" href="{{ url('/produk-unggulan-kawasan') }}">Produk Unggulan Kawasan</a></li>
+              </ul>
             </li>
             <!-- {{-- <li class="nav-item">
               <a class="nav-link fs-6" href="halaman/bkad.html">BKAD</a>
