@@ -231,20 +231,6 @@ Route::middleware(['guest'])->group(function () {
         Route::get('/pariwisata-kawasan/{nama_kawasan}', [PariwisataKawasanController::class, 'pariwisata']);
         // Route::get('/pariwisata-kawasan/{nama_kawasan}', [PariwisataKawasanController::class, 'pariwisata']);
 
-
-        // Route::get('/pariwisata-kawasan', function () {
-        //     return view('pariwisata.pariwisata_kawasan');
-        // })->name('pariwisata-kawasan');
-
-        // Route::get('/pariwisata-kawasan/halaman-kawasan', function () {
-        //     return view('pariwisata.halaman_kawasan');
-        // })->name('pariwisata-kawasan');
-
-        // Route::get('/produk-unggulan-desa/produk-unggulan-halaman', function () {
-        //     return view('pariwisata.halaman_kawasan');
-        // })->name('pariwisata-kawasan');
-
-
         // pariwisata dan detail desa
         // Route::get('/pariwisata/desa-bandongan', [WisataController::class, 'bandongan']);
         // Route::get('/pariwisata/desa-rejosari', [WisataController::class, 'rejosari']);
