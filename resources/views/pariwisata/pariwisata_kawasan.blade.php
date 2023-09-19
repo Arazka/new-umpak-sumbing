@@ -15,36 +15,19 @@
 </div>
 <div class="container">
     <div class="row">
+        @foreach ($data as $kawasan)
         <div class="col-md-4 mb-4">
-            <div class="card text-bg-dark h-100 position-relative">
-                <a class="h-100" href="{{ url('/pariwisata-kawasan/halaman-kawasan') }}" style="text-shadow: 1px 1px 0 #000; color:white;">
-                    <img src="https://picsum.photos/id/27/1080/720" class="card-img h-100" alt="...">
-                    <div class="position-absolute bottom-0 start-0 w-100 p-2" style="background: rgba(0, 0, 0, 0.5);">
-                        <h5 class="card-title text-white">Panorama</h5>
+            <div class="card text-bg-dark h-100">
+                <a class="h-100" href="{{ url("/pariwisata-kawasan/$kawasan->nama_kawasan") }}"
+                    style="text-shadow: 1px 1px 0 #000; color:white;">
+                    <img src="{{ asset('storage/' . $kawasan->foto) }}" class="card-img h-100" alt="...">
+                    <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                        <h5 class="card-title"><b>{{ $kawasan->nama_kawasan }}</b></h5>
                     </div>
                 </a>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card text-bg-dark h-100 position-relative">
-                <a class="h-100" href="{{ url('/pariwisata-kawasan/halaman-kawasan') }}" style="text-shadow: 1px 1px 0 #000; color:white;">
-                    <img src="https://picsum.photos/id/28/1080/720" class="card-img h-100" alt="...">
-                    <div class="position-absolute bottom-0 start-0 w-100 p-2" style="background: rgba(0, 0, 0, 0.5);">
-                        <h5 class="card-title text-white">Agrowisata</h5>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card text-bg-dark h-100 position-relative">
-                <a class="h-100"href="{{ url('/pariwisata-kawasan/halaman-kawasan') }}" style="text-shadow: 1px 1px 0 #000; color:white;">
-                    <img src="https://picsum.photos/id/42/1080/720" class="card-img h-100" alt="...">
-                    <div class="position-absolute bottom-0 start-0 w-100 p-2" style="background: rgba(0, 0, 0, 0.5);">
-                        <h5 class="card-title text-white">Wisata</h5>
-                    </div>
-                </a>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection
