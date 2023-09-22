@@ -268,8 +268,16 @@ Route::middleware(['guest'])->group(function () {
         // produk unggulan
         Route::get('/produk-unggulan-desa', function () {return view('produk_unggulan/produk_unggulan_desa');});
         
+        Route::get('/produk-unggulan-desa/halaman-desa', function () {
+            return view('produk_unggulan.halaman_desa');
+        })->name('produk-unggulan-desa');
+
         Route::get('/produk-unggulan-kawasan', function () {
             return view('produk_unggulan.produk_unggulan_kawasan');
+        })->name('produk-unggulan-kawasan');
+
+        Route::get('/produk-unggulan-kawasan/halaman-kawasan', function () {
+            return view('produk_unggulan.halaman_kawasan');
         })->name('produk-unggulan-kawasan');
 
         // bkad
