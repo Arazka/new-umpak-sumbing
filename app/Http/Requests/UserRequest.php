@@ -40,7 +40,7 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => 'isian :attribute tidak memenuhi',
+            'required' => 'isian : attribute harus diisi / tidak boleh kosong!',
             'password.min' => 'Password harus memiliki setidaknya 6 karakter',
         ];
     }

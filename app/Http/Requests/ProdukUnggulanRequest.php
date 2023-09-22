@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class KawasanRequest extends FormRequest
+class ProdukUnggulanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,10 @@ class KawasanRequest extends FormRequest
     public function rules()
     {
         return [
+            'type' => 'in:desa,kawasan',
             'foto' => 'file|max:5120',
-            'nama_kawasan' => 'required|string',
+            'nama_produk' => 'required|string',
+            'deskripsi' => 'required',
         ];
     }
 

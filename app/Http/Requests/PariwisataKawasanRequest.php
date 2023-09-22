@@ -34,7 +34,7 @@ class PariwisataKawasanRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => 'isian :attribute tidak memenuhi',
+            'required' => 'isian : attribute harus diisi / tidak boleh kosong!',
             'foto.max' => 'Ukuran foto harus lebih kecil dari 5 MB',
         ];
     }

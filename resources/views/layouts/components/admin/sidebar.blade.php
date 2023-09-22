@@ -80,7 +80,7 @@
           <i class="bi bi-globe-asia-australia"></i>
           <span>Pariwisata Kawasan</span>
       </a>
-      <div id="collapseUtilities" class="collapse {{ (request()->routeIs('kawasan')) ? 'show' : '' }} {{ (request()->routeIs('agrowisata')) ? 'show' : '' }} {{ (request()->routeIs('panorama')) ? 'show' : '' }} {{ (request()->routeIs('wisata-air')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div id="collapseUtilities" class="collapse {{ (request()->routeIs('kawasan')) ? 'show' : '' }} {{ (request()->routeIs('agrowisata')) ? 'show' : '' }} {{ (request()->routeIs('panorama')) ? 'show' : '' }} {{ (request()->routeIs('wisata-air')) ? 'show' : '' }}" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Kawasan:</h6>
               <a class="collapse-item {{ (request()->routeIs('kawasan')) ? 'active' : '' }}" href="{{ url('/admin/kawasan') }}">Data Kawasan</a>
@@ -94,6 +94,22 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
+
+    <div class="sidebar-heading">Produk Unggulan</div>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+          aria-expanded="true" aria-controls="collapsePages">
+          <i class="bi bi-globe-asia-australia"></i>
+          <span>Produk Unggulan</span>
+      </a>
+      <div id="collapsePages" class="collapse {{ (request()->routeIs('produk-unggulan-desa')) ? 'show' : '' }} {{ (request()->routeIs('produk-unggulan-kawasan')) ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Produk Unggulan:</h6>
+              <a class="collapse-item {{ (request()->routeIs('produk-unggulan-desa')) ? 'active' : '' }}" href="{{ url('admin/produk-unggulan-desa') }}">Produk Unggulan Desa</a>
+              <a class="collapse-item {{ (request()->routeIs('produk-unggulan-kawasan')) ? 'active' : '' }}" href="{{ url('admin/produk-unggulan-kawasan') }}">Produk Unggulan Kawasan</a>
+          </div>
+      </div>
+    </li>
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

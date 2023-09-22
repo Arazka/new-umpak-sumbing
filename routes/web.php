@@ -22,6 +22,9 @@ use App\Http\Controllers\Admin\PariwisataDesa\KalegenController;
 use App\Http\Controllers\Admin\PariwisataDesa\NgepanrejoController;
 use App\Http\Controllers\Admin\PariwisataDesa\SidorejoController;
 use App\Http\Controllers\Admin\PariwisataDesa\TrasanController;
+
+use App\Http\Controllers\Admin\ProdukUnggulan\ProdukUnggulanDesaController;
+use App\Http\Controllers\Admin\ProdukUnggulan\ProdukUnggulanKawasanController;
 // =================
 
 use App\Http\Controllers\BerandaController;
@@ -215,6 +218,28 @@ Route::middleware(['auth' => 'check'])->group(function () {
         Route::get('/admin/wisata-kawasan-wisata-air/{id}/edit', [WisataAirController::class, 'edit']);
         Route::patch('/admin/wisata-kawasan-wisata-air/{id}', [WisataAirController::class, 'updated']);
         Route::delete('/admin/wisata-kawasan-wisata-air/{id}', [WisataAirController::class, 'destroy']);
+    });
+
+    // ===== produk unggulan desa =====
+    Route::name('produk-unggulan-desa')->group(function () {
+        Route::get('/admin/produk-unggulan-desa', [ProdukUnggulanDesaController::class, 'index']);
+        Route::get('/admin/view-produk-unggulan-desa', [ProdukUnggulanDesaController::class, 'view']);
+        Route::get('/admin/produk-unggulan-desa/create', [ProdukUnggulanDesaController::class, 'create']);
+        Route::post('/admin/produk-unggulan-desa', [ProdukUnggulanDesaController::class, 'store']);
+        Route::get('/admin/produk-unggulan-desa/{id}/edit', [ProdukUnggulanDesaController::class, 'edit']);
+        Route::patch('/admin/produk-unggulan-desa/{id}', [ProdukUnggulanDesaController::class, 'updated']);
+        Route::delete('/admin/produk-unggulan-desa/{id}', [ProdukUnggulanDesaController::class, 'destroy']);
+    });
+
+    // ===== produk unggulan kawasan =====
+    Route::name('produk-unggulan-kawasan')->group(function () {
+        Route::get('/admin/produk-unggulan-kawasan', [ProdukUnggulanKawasanController::class, 'index']);
+        Route::get('/admin/view-produk-unggulan-kawasan', [ProdukUnggulanKawasanController::class, 'view']);
+        Route::get('/admin/produk-unggulan-kawasan/create', [ProdukUnggulanKawasanController::class, 'create']);
+        Route::post('/admin/produk-unggulan-kawasan', [ProdukUnggulanKawasanController::class, 'store']);
+        Route::get('/admin/produk-unggulan-kawasan/{id}/edit', [ProdukUnggulanKawasanController::class, 'edit']);
+        Route::patch('/admin/produk-unggulan-kawasan/{id}', [ProdukUnggulanKawasanController::class, 'updated']);
+        Route::delete('/admin/produk-unggulan-kawasan/{id}', [ProdukUnggulanKawasanController::class, 'destroy']);
     });
 });
 

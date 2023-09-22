@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
-@section('title', 'Update Data Wisata Desa Kalegen')
+@section('title', 'Update Data Produk Unggulan Desa')
 @section('main')
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-2">
-    <h1 class="h3 mb-0 text-gray-800">Update Data Wisata</h1>
+    <h1 class="h3 mb-0 text-gray-800">Update Data Produk</h1>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ url('admin/wisata-kalegen') }}">Data Wisata Desa Kalegen</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Update Data Wisata</li>
+        <li class="breadcrumb-item"><a href="{{ url('admin/produk-unggulan-desa') }}">Data Produk Unggulan Desa</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Update Data Produk</li>
       </ol>
     </nav>
   </div>
@@ -27,12 +27,22 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-body">
-      <form method="POST" action="{{ url("/admin/wisata-kalegen/$kalegen->id") }}" enctype="multipart/form-data">
+      <form method="POST" action="{{ url("/admin/produk-unggulan-desa/$produk->id") }}" enctype="multipart/form-data">
         @csrf @method('PATCH')
                 <div class="card-body">
+                    {{-- <div class="form-group">
+                      <label for="exampleInputJK">Nama Desa</label>
+                      <select class="form-control" name="desa_id" id="desa_id" required>
+                          @foreach ($desa as $desas)
+                              <option value="{{ $desas->id }}" @if ($desas->id == $produk->desa_id)
+                                  selected=""
+                              @endif>{{ $desas->nama_desa }}</option>
+                          @endforeach
+                      </select>
+                    </div> --}}
                     <div class="mb-3">
                         <label for="foto" class="form-label">Upload foto</label>
-                        <img src="{{ url(asset('storage/'.$kalegen->foto)) }}" class="img-preview img-fluid col-sm-3 mb-3 d-block">
+                        <img src="{{ url(asset('storage/'.$produk->foto)) }}" class="img-preview img-fluid col-sm-3 mb-3 d-block">
                         <input class="form-control" type="file" id="foto" name="foto" onchange="previewImage()">
                         @error('foto')
                         <span class="text-danger">
@@ -41,33 +51,24 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="nama_wisata">Nama Pariwisata</label>
-                        <input type="text" class="form-control" name="nama_wisata" id="nama_wisata" placeholder="Nama Pariwisata" value="{{ old('nama_wisata', $kalegen->nama_wisata) }}" required>
-                        @error('nama_wisata')
+                        <label for="nama_produk">Nama Produk</label>
+                        <input type="text" class="form-control" name="nama_produk" id="nama_produk" placeholder="Nama Produk" value="{{ old('nama_produk', $produk->nama_produk) }}" required>
+                        @error('nama_produk')
                         <span class="text-danger">
                           {{ $message }}
                         </span>
                         @enderror
                     </div>
-                    {{-- <div class="form-group">
-                      <label for="deskripsi">Deskripsi</label>
-                      <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" rows="7" required>{{ old('deskripsi', $kalegen->deskripsi) }}</textarea>
-                      @error('deskripsi')
-                      <span class="text-danger">
-                          {{ $message }}
-                      </span>
-                      @enderror
-                    </div> --}}
                     <div class="form-group">
                       <label for="deskripsi">Deskripsi</label>
-                      <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi', $kalegen->deskripsi) }}" required>
+                      <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi', $produk->deskripsi) }}" required>
                       <trix-editor input="deskripsi"></trix-editor>
                       @error('deskripsi')
                       <span class="text-danger">
                           {{ $message }}
                       </span>
                       @enderror
-                    </div>
+                    </div>  
                   
                 </div>
                 <div class="card-body">

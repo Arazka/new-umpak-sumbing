@@ -37,7 +37,7 @@
           @endforeach
         </section>
       </div>
-      <div class="sticky-parent col-lg-4">
+      <div class="sticky-parent col-lg-4 ps-5">
         <figure class="figure visi-misi  position-sticky" style="top: 7rem">
             <img src="{{ asset('storage/'.$desa->foto_kawasan) }}" class="figure-img img-fluid rounded" alt="Responsive Image">
             <figcaption class="figure-caption">Kawasan {{ $desa->nama_desa }}</figcaption>
