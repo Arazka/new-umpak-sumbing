@@ -31,7 +31,8 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PariwisataDesaController;
 use App\Http\Controllers\PariwisataKawasanController;
-use App\Http\Controllers\GetDesaController;
+// use App\Http\Controllers\GetDesaController;
+use App\Http\Controllers\ProdukUnggulanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -266,19 +267,11 @@ Route::middleware(['guest'])->group(function () {
         // Route::get('/pariwisata/desa-trasan', [WisataController::class, 'trasan']);
 
         // produk unggulan
-        Route::get('/produk-unggulan-desa', function () {return view('produk_unggulan/produk_unggulan_desa');});
-        
-        Route::get('/produk-unggulan-desa/halaman-desa', function () {
-            return view('produk_unggulan.halaman_desa');
-        })->name('produk-unggulan-desa');
-
-        Route::get('/produk-unggulan-kawasan', function () {
-            return view('produk_unggulan.produk_unggulan_kawasan');
-        })->name('produk-unggulan-kawasan');
-
-        Route::get('/produk-unggulan-kawasan/halaman-kawasan', function () {
-            return view('produk_unggulan.halaman_kawasan');
-        })->name('produk-unggulan-kawasan');
+        // Route::get('/produk-unggulan-desa', function () {return view('produk_unggulan/produk_unggulan_desa');});
+        Route::get('/produk-unggulan-desa', [ProdukUnggulanController::class, 'desa']);
+        Route::get('/produk-unggulan-kawasan', [ProdukUnggulanController::class, 'kawasan']);
+        Route::get('/produk-unggulan-desa/{nama_produk}', [ProdukUnggulanController::class, 'desaDetail']);
+        Route::get('/produk-unggulan-kawasan/{nama_produk}', [ProdukUnggulanController::class, 'kawasanDetail']);
 
         // bkad
         Route::get('/bkad/profil-lembaga', function () {return view('bkad/profilLembaga');});

@@ -18,45 +18,15 @@
             <br>
             <!-- Section 2 destinasi wisata unggulan-->
             <section>
-                <h3 class="text-left">Nama Produk</h3>
+                @foreach ($kawasan as $kawasans)
+                <h3 class="text-left">{{ $kawasans->nama_produk }}</h3>
                 <section>
-                    <img src="https://picsum.photos/id/57/1920/1080" class="img-fluid my-3 w-100" alt="Blog Image" style="height: 30rem; object-fit: cover;">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat officiis natus amet omnis
-                        adipisci modi qui aspernatur, laudantium molestiae veritatis dolor quos odio consequatur
-                        reiciendis facere? Unde laboriosam optio numquam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat officiis natus amet omnis
-                        adipisci modi qui aspernatur, laudantium molestiae veritatis dolor quos odio consequatur
-                        reiciendis facere? Unde laboriosam optio numquam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat officiis natus amet omnis
-                        adipisci modi qui aspernatur, laudantium molestiae veritatis dolor quos odio consequatur
-                        reiciendis facere? Unde laboriosam optio numquam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat officiis natus amet omnis
-                        adipisci modi qui aspernatur, laudantium molestiae veritatis dolor quos odio consequatur
-                        reiciendis facere? Unde laboriosam optio numquam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat officiis natus amet omnis
-                        adipisci modi qui aspernatur, laudantium molestiae veritatis dolor quos odio consequatur
-                        reiciendis facere? Unde laboriosam optio numquam.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat officiis natus amet omnis
-                        adipisci modi qui aspernatur, laudantium molestiae veritatis dolor quos odio consequatur
-                        reiciendis facere? Unde laboriosam optio numquam. Lorem ipsum dolor, sit amet consectetur
-                        adipisicing elit. Dolorum odio similique beatae. Sapiente nihil nobis earum delectus natus
-                        rerum aspernatur, ex, perspiciatis omnis consequatur iste accusamus cumque magni, eaque
-                        dolore.</p>
-                        <img src="https://picsum.photos/id/69/1024/768" class="img-fluid my-3 w-100" alt="Blog Image" style="height: 30rem; object-fit: cover;">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat officiis natus amet omnis
-                        adipisci modi qui aspernatur, laudantium molestiae veritatis dolor quos odio consequatur
-                        reiciendis facere? Unde laboriosam optio numquam. Lorem ipsum dolor, sit amet consectetur
-                        adipisicing elit. Dolorum odio similique beatae. Sapiente nihil nobis earum delectus natus
-                        rerum aspernatur, ex, perspiciatis omnis consequatur iste accusamus cumque magni, eaque
-                        dolore. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor non ducimus natus
-                        odit. Qui, ex iure voluptas ea accusantium labore hic eveniet deleniti cumque ab dolor
-                        numquam dicta ipsam excepturi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat officiis natus amet omnis
-                        adipisci modi qui aspernatur, laudantium molestiae veritatis dolor quos odio consequatur
-                        reiciendis facere? Unde laboriosam optio numquam. Lorem ipsum dolor, sit amet consectetur
-                        adipisicing elit. Dolorum odio similique beatae. Sapiente nihil nobis earum delectus natus
-                        rerum aspernatur, ex, perspiciatis omnis consequatur iste accusamus cumque magni, eaque
-                        dolore. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor non ducimus natus
-                        odit. Qui, ex iure voluptas ea accusantium labore hic eveniet deleniti cumque ab dolor
-                        numquam dicta ipsam excepturi.</p>
+                    <img src="{{ asset('storage/'.$kawasans->foto) }}" class="img-fluid my-3 w-100" alt="Blog Image" style="height: 30rem; object-fit: cover;">
+                    <p>{!! $kawasans->deskripsi !!}</p>
                     <br>
                 </section>
             </section>
+            @endforeach
         </div>
         <!-- END -->
     </div>
