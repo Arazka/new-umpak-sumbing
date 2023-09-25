@@ -18,8 +18,6 @@
         <img src="{{ asset('img\struktur\struktur_organisasi.png') }}" class="img-fluid" alt="..." style="border-radius: 1rem" />
       </div>
     </div>
-    <p>Struktur Organisasi Badan Kerjasama Antar Desa dapat diunduh pada :</p>
-    <button type="button" class="btn btn-success">Unduh <i class="bi bi-download"></i></button>
   </div>
     
       

@@ -28,8 +28,6 @@
             </p>
           </div>
         </div>
-        <p>File program kerja dapat diunduh pada :</p>
-        <button type="button" class="btn btn-success">Unduh <i class="bi bi-download"></i></button>
       </div>
       
 @endsection

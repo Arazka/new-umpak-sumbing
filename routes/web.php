@@ -9,7 +9,13 @@ use App\Http\Controllers\Admin\DesaController;
 
 use App\Http\Controllers\Admin\Beranda\BeritaController;
 use App\Http\Controllers\Admin\Beranda\ProfileUmpakSumbingController;
-
+use App\Http\Controllers\Admin\BKAD\ProfilLembagaController;
+use App\Http\Controllers\Admin\BKAD\ProgramKerjaController;
+use App\Http\Controllers\Admin\BKAD\RPKPController;
+use App\Http\Controllers\Admin\BKAD\StrukturOrganisasiController;
+use App\Http\Controllers\Admin\BUMDESMA\ProfilLembagaBumdesmaController;
+use App\Http\Controllers\Admin\BUMDESMA\ProgramKerjaBumdesmaController;
+use App\Http\Controllers\Admin\BUMDESMA\StrukturOrganisasiBumdesmaController;
 use App\Http\Controllers\Admin\PariwisataKawasan\KawasanController;
 use App\Http\Controllers\Admin\PariwisataKawasan\AgrowisataController;
 use App\Http\Controllers\Admin\PariwisataKawasan\PanoramaController;
@@ -241,6 +247,83 @@ Route::middleware(['auth' => 'check'])->group(function () {
         Route::get('/admin/produk-unggulan-kawasan/{id}/edit', [ProdukUnggulanKawasanController::class, 'edit']);
         Route::patch('/admin/produk-unggulan-kawasan/{id}', [ProdukUnggulanKawasanController::class, 'updated']);
         Route::delete('/admin/produk-unggulan-kawasan/{id}', [ProdukUnggulanKawasanController::class, 'destroy']);
+    });
+
+    // ===== Profil Lembaga BKAD =====
+    Route::name('profil-lembaga-bkad')->group(function () {
+        Route::get('/admin/profil-lembaga-bkad', [ProfilLembagaController::class, 'index']);
+        Route::get('/admin/view-profil-lembaga-bkad', [ProfilLembagaController::class, 'view']);
+        Route::get('/admin/profil-lembaga-bkad/create', [ProfilLembagaController::class, 'create']);
+        Route::post('/admin/profil-lembaga-bkad', [ProfilLembagaController::class, 'store']);
+        Route::get('/admin/profil-lembaga-bkad/{id}/edit', [ProfilLembagaController::class, 'edit']);
+        Route::patch('/admin/profil-lembaga-bkad/{id}', [ProfilLembagaController::class, 'updated']);
+        Route::delete('/admin/profil-lembaga-bkad/{id}', [ProfilLembagaController::class, 'destroy']);
+    });
+
+    // ===== Struktur Organisasi BKAD =====
+    Route::name('struktur-organisasi-bkad')->group(function () {
+        Route::get('/admin/struktur-organisasi-bkad', [StrukturOrganisasiController::class, 'index']);
+        Route::get('/admin/view-struktur-organisasi-bkad', [StrukturOrganisasiController::class, 'view']);
+        Route::get('/admin/struktur-organisasi-bkad/create', [StrukturOrganisasiController::class, 'create']);
+        Route::post('/admin/struktur-organisasi-bkad', [StrukturOrganisasiController::class, 'store']);
+        Route::get('/admin/struktur-organisasi-bkad/{id}/edit', [StrukturOrganisasiController::class, 'edit']);
+        Route::patch('/admin/struktur-organisasi-bkad/{id}', [StrukturOrganisasiController::class, 'updated']);
+        Route::delete('/admin/struktur-organisasi-bkad/{id}', [StrukturOrganisasiController::class, 'destroy']);
+    });
+
+    // ===== Program Kerja BKAD =====
+    Route::name('program-kerja-bkad')->group(function () {
+        Route::get('/admin/program-kerja-bkad', [ProgramKerjaController::class, 'index']);
+        Route::get('/admin/view-program-kerja-bkad', [ProgramKerjaController::class, 'view']);
+        Route::get('/admin/program-kerja-bkad/create', [ProgramKerjaController::class, 'create']);
+        Route::post('/admin/program-kerja-bkad', [ProgramKerjaController::class, 'store']);
+        Route::get('/admin/program-kerja-bkad/{id}/edit', [ProgramKerjaController::class, 'edit']);
+        Route::patch('/admin/program-kerja-bkad/{id}', [ProgramKerjaController::class, 'updated']);
+        Route::delete('/admin/program-kerja-bkad/{id}', [ProgramKerjaController::class, 'destroy']);
+    });
+
+    // ===== RPKP BKAD =====
+    Route::name('rpkp-bkad')->group(function () {
+        Route::get('/admin/rpkp-bkad', [RPKPController::class, 'index']);
+        Route::get('/admin/view-rpkp-bkad', [RPKPController::class, 'view']);
+        Route::get('/admin/rpkp-bkad/create', [RPKPController::class, 'create']);
+        Route::post('/admin/rpkp-bkad', [RPKPController::class, 'store']);
+        Route::get('/admin/rpkp-bkad/{id}/edit', [RPKPController::class, 'edit']);
+        Route::patch('/admin/rpkp-bkad/{id}', [RPKPController::class, 'updated']);
+        Route::delete('/admin/rpkp-bkad/{id}', [RPKPController::class, 'destroy']);
+    });
+
+    // ===== Profil Lembaga BUMDESMA =====
+    Route::name('profil-lembaga-bumdesma')->group(function () {
+        Route::get('/admin/profil-lembaga-bumdesma', [ProfilLembagaBumdesmaController::class, 'index']);
+        Route::get('/admin/view-profil-lembaga-bumdesma', [ProfilLembagaBumdesmaController::class, 'view']);
+        Route::get('/admin/profil-lembaga-bumdesma/create', [ProfilLembagaBumdesmaController::class, 'create']);
+        Route::post('/admin/profil-lembaga-bumdesma', [ProfilLembagaBumdesmaController::class, 'store']);
+        Route::get('/admin/profil-lembaga-bumdesma/{id}/edit', [ProfilLembagaBumdesmaController::class, 'edit']);
+        Route::patch('/admin/profil-lembaga-bumdesma/{id}', [ProfilLembagaBumdesmaController::class, 'updated']);
+        Route::delete('/admin/profil-lembaga-bumdesma/{id}', [ProfilLembagaBumdesmaController::class, 'destroy']);
+    });
+
+    // ===== Struktur Organisasi BUMDESMA =====
+    Route::name('struktur-organisasi-bumdesma')->group(function () {
+        Route::get('/admin/struktur-organisasi-bumdesma', [StrukturOrganisasiBumdesmaController::class, 'index']);
+        Route::get('/admin/view-struktur-organisasi-bumdesma', [StrukturOrganisasiBumdesmaController::class, 'view']);
+        Route::get('/admin/struktur-organisasi-bumdesma/create', [StrukturOrganisasiBumdesmaController::class, 'create']);
+        Route::post('/admin/struktur-organisasi-bumdesma', [StrukturOrganisasiBumdesmaController::class, 'store']);
+        Route::get('/admin/struktur-organisasi-bumdesma/{id}/edit', [StrukturOrganisasiBumdesmaController::class, 'edit']);
+        Route::patch('/admin/struktur-organisasi-bumdesma/{id}', [StrukturOrganisasiBumdesmaController::class, 'updated']);
+        Route::delete('/admin/struktur-organisasi-bumdesma/{id}', [StrukturOrganisasiBumdesmaController::class, 'destroy']);
+    });
+
+    // ===== Program Kerja BUMDESMA =====
+    Route::name('program-kerja-bumdesma')->group(function () {
+        Route::get('/admin/program-kerja-bumdesma', [ProgramKerjaBumdesmaController::class, 'index']);
+        Route::get('/admin/view-program-kerja-bumdesma', [ProgramKerjaBumdesmaController::class, 'view']);
+        Route::get('/admin/program-kerja-bumdesma/create', [ProgramKerjaBumdesmaController::class, 'create']);
+        Route::post('/admin/program-kerja-bumdesma', [ProgramKerjaBumdesmaController::class, 'store']);
+        Route::get('/admin/program-kerja-bumdesma/{id}/edit', [ProgramKerjaBumdesmaController::class, 'edit']);
+        Route::patch('/admin/program-kerja-bumdesma/{id}', [ProgramKerjaBumdesmaController::class, 'updated']);
+        Route::delete('/admin/program-kerja-bumdesma/{id}', [ProgramKerjaBumdesmaController::class, 'destroy']);
     });
 });
 

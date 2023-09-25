@@ -99,7 +99,7 @@
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
           aria-expanded="true" aria-controls="collapsePages">
-          <i class="bi bi-globe-asia-australia"></i>
+          <i class="bi bi-inboxes-fill"></i>
           <span>Produk Unggulan</span>
       </a>
       <div id="collapsePages" class="collapse {{ (request()->routeIs('produk-unggulan-desa')) ? 'show' : '' }} {{ (request()->routeIs('produk-unggulan-kawasan')) ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -107,6 +107,45 @@
               <h6 class="collapse-header">Produk Unggulan:</h6>
               <a class="collapse-item {{ (request()->routeIs('produk-unggulan-desa')) ? 'active' : '' }}" href="{{ url('admin/produk-unggulan-desa') }}">Produk Unggulan Desa</a>
               <a class="collapse-item {{ (request()->routeIs('produk-unggulan-kawasan')) ? 'active' : '' }}" href="{{ url('admin/produk-unggulan-kawasan') }}">Produk Unggulan Kawasan</a>
+          </div>
+      </div>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block" />
+
+    <div class="sidebar-heading">BKAD</div>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#bkad"
+          aria-expanded="true" aria-controls="bkad">
+          <i class="bi bi-bank"></i>
+          <span>BKAD</span>
+      </a>
+      <div id="bkad" class="collapse {{ (request()->routeIs('profil-lembaga-bkad')) ? 'show' : '' }} {{ (request()->routeIs('struktur-organisasi-bkad')) ? 'show' : '' }} {{ (request()->routeIs('program-kerja-bkad')) ? 'show' : '' }} {{ (request()->routeIs('rpkp-bkad')) ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">BKAD:</h6>
+              <a class="collapse-item {{ (request()->routeIs('profil-lembaga-bkad')) ? 'active' : '' }}" href="{{ url('admin/profil-lembaga-bkad') }}">Profil Lembaga</a>
+              <a class="collapse-item {{ (request()->routeIs('struktur-organisasi-bkad')) ? 'active' : '' }}" href="{{ url('admin/struktur-organisasi-bkad') }}">Struktur Organisasi</a>
+              <a class="collapse-item {{ (request()->routeIs('program-kerja-bkad')) ? 'active' : '' }}" href="{{ url('admin/program-kerja-bkad') }}">Program Kerja</a>
+              <a class="collapse-item {{ (request()->routeIs('rpkp-bkad')) ? 'active' : '' }}" href="{{ url('admin/rpkp-bkad') }}">RPKP</a>
+          </div>
+      </div>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block" />
+
+    <div class="sidebar-heading">BUMDESMA</div>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#bumdesma"
+          aria-expanded="true" aria-controls="bumdesma">
+          <i class="bi bi-bank2"></i>
+          <span>BUMDESMA</span>
+      </a>
+      <div id="bumdesma" class="collapse {{ (request()->routeIs('profil-lembaga-bumdesma')) ? 'show' : '' }} {{ (request()->routeIs('struktur-organisasi-bumdesma')) ? 'show' : '' }} {{ (request()->routeIs('program-kerja-bumdesma')) ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">BUMDESMA:</h6>
+              <a class="collapse-item {{ (request()->routeIs('profil-lembaga-bumdesma')) ? 'active' : '' }}" href="{{ url('admin/profil-lembaga-bumdesma') }}">Profil Lembaga</a>
+              <a class="collapse-item {{ (request()->routeIs('struktur-organisasi-bumdesma')) ? 'active' : '' }}" href="{{ url('admin/struktur-organisasi-bumdesma') }}">Struktur Organisasi</a>
+              <a class="collapse-item {{ (request()->routeIs('program-kerja-bumdesma')) ? 'active' : '' }}" href="{{ url('admin/program-kerja-bumdesma') }}">Program Kerja</a>
           </div>
       </div>
     </li>

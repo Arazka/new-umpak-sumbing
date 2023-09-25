@@ -6,7 +6,6 @@
     <br>
     <h1>Produk Unggulan Kawasan</h1>
     <hr>
-    <h4>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam sint itaque, numquam doloremque fugit esse distinctio, iusto est a, in quae quos neque repellendus. Maiores sequi distinctio nisi provident aperiam?</h4>
     <br>
 
     <div class="row">

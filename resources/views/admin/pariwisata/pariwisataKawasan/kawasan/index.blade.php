@@ -18,9 +18,9 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3 justify-content-between d-flex">
-      @if (Auth::user()->type == 'admin')
+      {{-- @if (Auth::user()->type == 'admin')
         <a class="btn btn-primary" href="{{ url('/admin/kawasan/create') }}" title="Tambah Data Kawasan">Tambah Data Kawasan</a>
-      @endif
+      @endif --}}
       {{-- <a class="btn btn-warning" href="{{ url('/admin/view-kawasan') }}" title="Lihat Data Kawasan">Lihat Data Kawasan</a> --}}
       </div>
       <div class="card-body">
@@ -47,13 +47,10 @@
                 @can('admin')               
                 <td class="gap-2 text-center">
                   <form id="delete-kawasan-{{$kawasan->id}}" action="{{ url("admin/kawasan/$kawasan->id") }}" method="POST">
-                  @csrf @method('DELETE')
-                  {{-- <button type="button" class="btn btn-primary"><i class="bi bi-folder-fill"></i> Lihat</button> --}}
+                    @csrf @method('DELETE')
+                    <a href="{{ url("admin/kawasan/$kawasan->id/edit") }}" class="btn btn-success mb-3"><i class="bi bi-pencil-fill" title="Edit"> Edit</i></a>
+                    {{-- <button type="button" class="btn btn-primary"><i class="bi bi-folder-fill"></i> Lihat</button> --}}
                   @if (Auth::user()->type == 'admin')
-                  <a href="{{ url("admin/kawasan/$kawasan->id/edit") }}" class="btn btn-success"><i class="bi bi-pencil-fill" title="Edit"> Edit</i></a>
-                      <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus">
-                        <i class="fa fa-trash"></i> Hapus
-                      </button>
                   @endif
                   </form>
                 </td>
