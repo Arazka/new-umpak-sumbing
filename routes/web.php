@@ -31,14 +31,18 @@ use App\Http\Controllers\Admin\PariwisataDesa\TrasanController;
 
 use App\Http\Controllers\Admin\ProdukUnggulan\ProdukUnggulanDesaController;
 use App\Http\Controllers\Admin\ProdukUnggulan\ProdukUnggulanKawasanController;
+use App\Http\Controllers\Admin\Regulasi\RegulasiController;
 // =================
 
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\BKADController;
+use App\Http\Controllers\BUMDESMAController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PariwisataDesaController;
 use App\Http\Controllers\PariwisataKawasanController;
 // use App\Http\Controllers\GetDesaController;
 use App\Http\Controllers\ProdukUnggulanController;
+use App\Http\Controllers\RegulasiViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +66,7 @@ Route::post('/admin/login', [AuthController::class, 'login']);
 Route::middleware(['auth' => 'check'])->group(function () {
     // Route::get('/admin/dashboard', function () {return view('admin.dashboard');})->name('dashboard');
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // Route::get('/admin/dashboard', [DashboardController::class, 'pariwisata'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/404', function () {return view('admin.404');});
 
@@ -325,6 +330,17 @@ Route::middleware(['auth' => 'check'])->group(function () {
         Route::patch('/admin/program-kerja-bumdesma/{id}', [ProgramKerjaBumdesmaController::class, 'updated']);
         Route::delete('/admin/program-kerja-bumdesma/{id}', [ProgramKerjaBumdesmaController::class, 'destroy']);
     });
+
+    // ===== Regulasi =====
+    Route::name('regulasi')->group(function () {
+        Route::get('/admin/regulasi', [RegulasiController::class, 'index']);
+        Route::get('/admin/view-regulasi', [RegulasiController::class, 'view']);
+        Route::get('/admin/regulasi/create', [RegulasiController::class, 'create']);
+        Route::post('/admin/regulasi', [RegulasiController::class, 'store']);
+        Route::get('/admin/regulasi/{id}/edit', [RegulasiController::class, 'edit']);
+        Route::patch('/admin/regulasi/{id}', [RegulasiController::class, 'updated']);
+        Route::delete('/admin/regulasi/{id}', [RegulasiController::class, 'destroy']);
+    });
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -340,15 +356,6 @@ Route::middleware(['guest'])->group(function () {
         Route::get('/pariwisata-kawasan/{nama_kawasan}', [PariwisataKawasanController::class, 'pariwisata']);
         // Route::get('/pariwisata-kawasan/{nama_kawasan}', [PariwisataKawasanController::class, 'pariwisata']);
 
-        // pariwisata dan detail desa
-        // Route::get('/pariwisata/desa-bandongan', [WisataController::class, 'bandongan']);
-        // Route::get('/pariwisata/desa-rejosari', [WisataController::class, 'rejosari']);
-        // Route::get('/pariwisata/desa-gandusari', [WisataController::class, 'gandusari']);
-        // Route::get('/pariwisata/desa-kalegen', [WisataController::class, 'kalegen']);
-        // Route::get('/pariwisata/desa-ngepanrejo', [WisataController::class, 'ngepanrejo']);
-        // Route::get('/pariwisata/desa-sidorejo', [WisataController::class, 'sidorejo']);
-        // Route::get('/pariwisata/desa-trasan', [WisataController::class, 'trasan']);
-
         // produk unggulan
         // Route::get('/produk-unggulan-desa', function () {return view('produk_unggulan/produk_unggulan_desa');});
         Route::get('/produk-unggulan-desa', [ProdukUnggulanController::class, 'desa']);
@@ -357,19 +364,19 @@ Route::middleware(['guest'])->group(function () {
         Route::get('/produk-unggulan-kawasan/{nama_produk}', [ProdukUnggulanController::class, 'kawasanDetail']);
 
         // bkad
-        Route::get('/bkad/profil-lembaga', function () {return view('bkad/profilLembaga');});
-        Route::get('/bkad/struktur-organisasi', function () {return view('bkad/strukturOrganisasi');});
-        Route::get('/bkad/program-kerja', function () {return view('bkad/programKerja');});
-        Route::get('/bkad/rencana-pembangunan-kawasan-pedesaan', function () {return view('bkad/rpkp');});
-
+        Route::get('/bkad/profil-lembaga', [BKADController::class, 'profil']);
+        Route::get('/bkad/struktur-organisasi', [BKADController::class, 'struktur']);
+        Route::get('/bkad/program-kerja', [BKADController::class, 'proker']);
+        Route::get('/bkad/rencana-pembangunan-kawasan-pedesaan', [BKADController::class, 'rpkp']);
+        
         // budesma
-        Route::get('/bumdesma/profil-lembaga', function () {return view('bumdesma/profilLembaga');});
-        Route::get('/bumdesma/struktur-organisasi', function () {return view('bumdesma/strukturOrganisasi');});
-        Route::get('/bumdesma/program-kerja', function () {return view('bumdesma/programKerja');});
-        Route::get('/bumdesma/regulasi', function () {return view('bumdesma/regulasi');});
+        Route::get('/bumdesma/profil-lembaga', [BUMDESMAController::class, 'profil']);
+        Route::get('/bumdesma/struktur-organisasi', [BUMDESMAController::class, 'struktur']);
+        Route::get('/bumdesma/program-kerja', [BUMDESMAController::class, 'proker']);
 
         // regulasi
-        Route::get('/regulasi', function () {return view('regulasi/regulasi');});
+        Route::get('/regulasi', [RegulasiViewController::class, 'index']);
+        // Route::get('/regulasi', function () {return view('regulasi/regulasi');});
 
         // map experimental
         Route::get('/experimental', function () {return view('map-experimental/map');});

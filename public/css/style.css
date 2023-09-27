@@ -1,6 +1,6 @@
-/* body {
-  background-color: #898585;
-} */
+body {
+    font-family: "Roboto", sans-serif;
+}
 
 /* .container {
   border: red solid;
@@ -167,7 +167,7 @@
     }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 530px) {
     .navbar .container .title {
         display: none;
     }

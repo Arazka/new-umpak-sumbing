@@ -15,11 +15,12 @@
     <div class="card my-4 p-2" style="width: 100%; border-radius: 1rem">
       <div class="card-body">
         <h4 class="card-title text-danger fw-bolder mb-4">Bagan Struktur Organisasi</h4>
-        <img src="{{ asset('img\struktur\struktur_organisasi.png') }}" class="img-fluid" alt="..." style="border-radius: 1rem" />
+        <img src="{{ asset('storage/'.$struktur->first()->foto) }}" class="img-fluid" alt="..." style="border-radius: 1rem" />
+        <p class="card-text">
+          {!! $struktur->first()->deskripsi !!}
+        </p>
       </div>
     </div>
-    <p>Struktur Organisasi Badan Kerjasama Antar Desa dapat diunduh pada :</p>
-    <button type="button" class="btn btn-success">Unduh <i class="bi bi-download"></i></button>
   </div>
     
       

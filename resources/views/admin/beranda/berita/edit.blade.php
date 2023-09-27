@@ -62,6 +62,7 @@
                       <label for="deskripsi">Deskripsi</label>
                       <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi', $berita->deskripsi) }}" required>
                       <trix-editor input="deskripsi"></trix-editor>
+                      <p id="deskripsiValidationMessage" class="text-danger"></p>
                       @error('deskripsi')
                       <span class="text-danger">
                           {{ $message }}
@@ -92,5 +93,23 @@ function previewImage() {
         imgPreview.src = oFREvent.target.result;
     }
 }
+</script>
+
+<script>
+  const deskripsiInput = document.getElementById("deskripsi");
+  const deskripsiEditor = document.querySelector("trix-editor");
+  const deskripsiValidationMessage = document.getElementById("deskripsiValidationMessage");
+
+  deskripsiEditor.addEventListener("trix-change", function () {
+      const text = deskripsiInput.value;
+
+      if (text.length > 375) {
+          deskripsiValidationMessage.textContent = "Deskripsi tidak boleh lebih dari 375 karakter.";
+          deskripsiEditor.style.borderColor = "red";
+      } else {
+          deskripsiValidationMessage.textContent = "";
+          deskripsiEditor.style.borderColor = ""; // Menghapus warna border merah jika valid.
+      }
+  });
 </script>
 @endsection

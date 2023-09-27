@@ -18,7 +18,7 @@
       <div class="umpak-sumbing col-lg-8 mb-4">
         <!-- Section 1 deskripsi desa -->
         <section>
-            <h2 class="text-left">{{ $desa->nama_desa }}</h2>
+            <h1 class="text-left">{{ $desa->nama_desa }}</h1>
             <hr>
             <p>{!! $desa->sejarah !!}</p>
         </section>

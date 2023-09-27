@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Desa')
+@section('title', 'Data Regulasi')
 @section('main')
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h3 mb-0 text-gray-800">Data Desa</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data Regulasi</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Data Desa</li>
+              <li class="breadcrumb-item active" aria-current="page">Data Regulasi</li>
             </ol>
           </nav>
       </div>
@@ -18,9 +18,9 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3 justify-content-between d-flex">
-      {{-- @can ('admin')
-        <a class="btn btn-primary" href="{{ url('/admin/desa/create') }}">Tambah Data Desa</a>
-      @endcan   --}}
+      @can ('admin')
+        <a class="btn btn-primary" href="{{ url('/admin/regulasi/create') }}">Tambah Regulasi</a>
+      @endcan  
       {{-- <a class="btn btn-warning" href="{{ url('/admin/view-berita') }}">Lihat Semua berita</a>   --}}
       </div>
       <div class="card-body">
@@ -30,8 +30,8 @@
               <tr>
                 <th width=10>No</th>
                 <th width=170>Foto</th>
-                <th>Nama Desa</th>
-                <th width=500>Sejarah</th>
+                <th>Judul</th>
+                <th width=500>Deskripsi</th>
                 @can ('admin')
                 <th width=200>Aksi</th>
                 @endcan
@@ -39,23 +39,24 @@
             </thead>
             <tbody>
               @if ($data != null)
-              @foreach ($data as $key => $desa)
+              @foreach ($data as $key => $regulasi)
               <tr>
                 <td>{{ $data->firstItem() + $key }}</td>
-                <td><img src="{{ asset('storage/' . $desa->foto) }}" alt="" style="width: 8rem;"></td>
-                <td>{{ $desa->nama_desa }}</td>
-                <td>{!! Str::limit($desa->sejarah, 170) !!}</td>
+                <td><img src="{{ asset('storage/' . $regulasi->foto) }}" alt="" style="width: 8rem"></td>
+                <td>{{ $regulasi->judul }}</td>
+                <td>{!! Str::limit($regulasi->deskripsi, 170) !!}</td>
                 @can ('admin')
                 <td class="gap-2 text-center">
-                  <a href="{{ url("admin/desa/$desa->id/edit") }}" class="btn btn-success"><i class="bi bi-pencil-fill" title="Edit"> Edit</i></a>
-                  {{-- <form id="delete-desa-{{$desa->id}}" action="{{ url("admin/desa/$desa->id") }}" method="POST">
+                  <form id="delete-regulasi-{{$regulasi->id}}" action="{{ url("admin/regulasi/$regulasi->id") }}" method="POST">
                   @csrf @method('DELETE')
+                  {{-- <button type="button" class="btn btn-primary"><i class="bi bi-folder-fill"></i> Lihat</button> --}}
                   @can ('admin')
+                  <a href="{{ url("admin/regulasi/$regulasi->id/edit") }}" class="btn btn-success"><i class="bi bi-pencil-fill" title="Edit"> Edit</i></a>
                       <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus">
                         <i class="fa fa-trash"></i> Hapus
                       </button>
                   @endcan
-                  </form> --}}
+                  </form>
                 </td>
                 @endcan
               </tr>

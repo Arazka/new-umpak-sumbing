@@ -15,6 +15,9 @@
     <link rel="icon" href="{{ asset('img/logo/logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-_vM9GsZ1aIl7X2d8o37Y4vuetGye030&callback=initMap" async defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
   </head>
   <body class="bg-light">
       {{-- <div class="fakeLoader"></div> --}}

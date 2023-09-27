@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
-@section('title', 'Tambah Berita')
+@section('title', 'Tambah Data Regulasi')
 @section('main')
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-2">
-    <h1 class="h3 mb-0 text-gray-800">Tambah Berita</h1>
+    <h1 class="h3 mb-0 text-gray-800">Tambah Data Regulasi</h1>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ url('admin/berita') }}">Data Berita</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Tambah Data Berita</li>
+        <li class="breadcrumb-item"><a href="{{ url('admin/regulasi') }}">Data Regulasi</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Tambah Data Regulasi</li>
       </ol>
     </nav>
   </div>
@@ -27,7 +27,7 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-body">
-      <form method="POST" action="{{ url('/admin/berita') }}" enctype="multipart/form-data">
+      <form method="POST" action="{{ url('/admin/regulasi') }}" enctype="multipart/form-data">
         @csrf
                 <div class="card-body">
                     <div class="mb-3">
@@ -62,7 +62,6 @@
                         <label for="exampleInputPassword1">Deskripsi</label>
                         <input id="deskripsi" type="hidden" name="deskripsi">
                         <trix-editor input="deskripsi"></trix-editor>
-                        <p id="deskripsiValidationMessage" class="text-danger"></p>
                         @error('deskripsi')
                         <span class="text-danger">
                           {{ $message }}
@@ -96,23 +95,5 @@ function previewImage() {
 document.addEventListener('trix-file-accept', function(e) {
   e.preventDefault();
 })
-</script>
-
-<script>
-  const deskripsiInput = document.getElementById("deskripsi");
-  const deskripsiEditor = document.querySelector("trix-editor");
-  const deskripsiValidationMessage = document.getElementById("deskripsiValidationMessage");
-
-  deskripsiEditor.addEventListener("trix-change", function () {
-      const text = deskripsiInput.value;
-
-      if (text.length > 375) {
-          deskripsiValidationMessage.textContent = "Deskripsi tidak boleh lebih dari 375 karakter.";
-          deskripsiEditor.style.borderColor = "red";
-      } else {
-          deskripsiValidationMessage.textContent = "";
-          deskripsiEditor.style.borderColor = ""; // Menghapus warna border merah jika valid.
-      }
-  });
 </script>
 @endsection

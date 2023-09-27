@@ -20,7 +20,7 @@ class PariwisataDesaController extends Controller
         $desa = Desa::where('nama_desa', $nama_desa)->first();
 
         $pariwisatas = Desa::join('pariwisata_desas','desa_id','=','desas.id')
-                            ->where('desas.nama_desa', $desa->nama_desa)
+                            ->where('desas.nama_desa', $nama_desa)
                             ->select([
                                 'desas.foto as desa_foto',
                                 'desas.nama_desa',

@@ -37,7 +37,9 @@
             <tbody>
               @if ($data != null)
               @foreach ($data as $key => $profil)
+              @can('admin')
               <a href="{{ url("admin/profil-lembaga-bumdesma/$profil->id/edit") }}" class="btn btn-success mb-3"><i class="bi bi-pencil-fill" title="Edit"> Edit</i></a>
+              @endcan
               <tr>
                 <td>{{ $key + 1 }}</td>
                 <td>{!! Str::limit($profil->sejarah, 170) !!}</td>

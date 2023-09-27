@@ -22,7 +22,7 @@
                     style="text-shadow: 1px 1px 0 #000; color:white;">
                     <img src="{{ asset('storage/' . $kawasan->foto) }}" class="card-img h-100" alt="...">
                     <div class="card-img-overlay d-flex justify-content-center align-items-center" style="background: rgba(36, 36, 36, 0.5)">
-                        <h5 class="card-title"><b>{{ $kawasan->nama_kawasan }}</b></h5>
+                        <h5 class="card-title">{{ $kawasan->nama_kawasan }}</></h5>
                     </div>
                 </a>
             </div>

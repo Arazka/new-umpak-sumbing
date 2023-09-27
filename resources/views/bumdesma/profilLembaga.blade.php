@@ -16,16 +16,7 @@
       <div class="card-body">
         <h4 class="card-title text-danger fw-bolder mb-3">BUMDESMA</h4>
         <p class="card-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit amet eum velit quia? Illo, fuga modi. Qui voluptatum aliquam, cum ducimus earum praesentium, eius perspiciatis voluptatibus vero autem odio natus quos consectetur
-          ab iste ullam, vitae obcaecati consequuntur? Temporibus voluptas nemo totam sint deserunt voluptatibus culpa unde molestiae blanditiis perferendis veniam consectetur nobis qui, ex odio porro. Omnis soluta ipsa libero sit natus
-          nisi mollitia vitae facere? Hic suscipit dolorum nam, incidunt placeat fuga qui eos? Autem nam iusto, odio vel, dolore laboriosam et non dicta hic molestias culpa possimus nisi, magni reprehenderit. Voluptate, similique id
-          ducimus laudantium rem quidem.
-        </p>
-        <p class="card-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit amet eum velit quia? Illo, fuga modi. Qui voluptatum aliquam, cum ducimus earum praesentium, eius perspiciatis voluptatibus vero autem odio natus quos consectetur
-          ab iste ullam, vitae obcaecati consequuntur? Temporibus voluptas nemo totam sint deserunt voluptatibus culpa unde molestiae blanditiis perferendis veniam consectetur nobis qui, ex odio porro. Omnis soluta ipsa libero sit natus
-          nisi mollitia vitae facere? Hic suscipit dolorum nam, incidunt placeat fuga qui eos? Autem nam iusto, odio vel, dolore laboriosam et non dicta hic molestias culpa possimus nisi, magni reprehenderit. Voluptate, similique id
-          ducimus laudantium rem quidem.
+          {!! $profil->first()->sejarah !!}
         </p>
       </div>
     </div>
@@ -33,16 +24,7 @@
       <div class="card-body">
         <h4 class="card-title text-danger fw-bolder mb-3">Visi dan Misi</h4>
         <p class="card-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit amet eum velit quia? Illo, fuga modi. Qui voluptatum aliquam, cum ducimus earum praesentium, eius perspiciatis voluptatibus vero autem odio natus quos consectetur
-          ab iste ullam, vitae obcaecati consequuntur? Temporibus voluptas nemo totam sint deserunt voluptatibus culpa unde molestiae blanditiis perferendis veniam consectetur nobis qui, ex odio porro. Omnis soluta ipsa libero sit natus
-          nisi mollitia vitae facere? Hic suscipit dolorum nam, incidunt placeat fuga qui eos? Autem nam iusto, odio vel, dolore laboriosam et non dicta hic molestias culpa possimus nisi, magni reprehenderit. Voluptate, similique id
-          ducimus laudantium rem quidem.
-        </p>
-        <p class="card-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit amet eum velit quia? Illo, fuga modi. Qui voluptatum aliquam, cum ducimus earum praesentium, eius perspiciatis voluptatibus vero autem odio natus quos consectetur
-          ab iste ullam, vitae obcaecati consequuntur? Temporibus voluptas nemo totam sint deserunt voluptatibus culpa unde molestiae blanditiis perferendis veniam consectetur nobis qui, ex odio porro. Omnis soluta ipsa libero sit natus
-          nisi mollitia vitae facere? Hic suscipit dolorum nam, incidunt placeat fuga qui eos? Autem nam iusto, odio vel, dolore laboriosam et non dicta hic molestias culpa possimus nisi, magni reprehenderit. Voluptate, similique id
-          ducimus laudantium rem quidem.
+          {!! $profil->first()->visi_dan_misi !!}
         </p>
       </div>
     </div>
@@ -50,16 +32,7 @@
       <div class="card-body">
         <h4 class="card-title text-danger fw-bolder mb-3">Tugas dan Fungsi</h4>
         <p class="card-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit amet eum velit quia? Illo, fuga modi. Qui voluptatum aliquam, cum ducimus earum praesentium, eius perspiciatis voluptatibus vero autem odio natus quos consectetur
-          ab iste ullam, vitae obcaecati consequuntur? Temporibus voluptas nemo totam sint deserunt voluptatibus culpa unde molestiae blanditiis perferendis veniam consectetur nobis qui, ex odio porro. Omnis soluta ipsa libero sit natus
-          nisi mollitia vitae facere? Hic suscipit dolorum nam, incidunt placeat fuga qui eos? Autem nam iusto, odio vel, dolore laboriosam et non dicta hic molestias culpa possimus nisi, magni reprehenderit. Voluptate, similique id
-          ducimus laudantium rem quidem.
-        </p>
-        <p class="card-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit amet eum velit quia? Illo, fuga modi. Qui voluptatum aliquam, cum ducimus earum praesentium, eius perspiciatis voluptatibus vero autem odio natus quos consectetur
-          ab iste ullam, vitae obcaecati consequuntur? Temporibus voluptas nemo totam sint deserunt voluptatibus culpa unde molestiae blanditiis perferendis veniam consectetur nobis qui, ex odio porro. Omnis soluta ipsa libero sit natus
-          nisi mollitia vitae facere? Hic suscipit dolorum nam, incidunt placeat fuga qui eos? Autem nam iusto, odio vel, dolore laboriosam et non dicta hic molestias culpa possimus nisi, magni reprehenderit. Voluptate, similique id
-          ducimus laudantium rem quidem.
+          {!! $profil->first()->tugas_dan_fungsi !!}
         </p>
       </div>
     </div>

@@ -132,22 +132,32 @@
     </li>
 
     <hr class="sidebar-divider d-none d-md-block" />
-
+    
     <div class="sidebar-heading">BUMDESMA</div>
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#bumdesma"
-          aria-expanded="true" aria-controls="bumdesma">
-          <i class="bi bi-bank2"></i>
-          <span>BUMDESMA</span>
-      </a>
-      <div id="bumdesma" class="collapse {{ (request()->routeIs('profil-lembaga-bumdesma')) ? 'show' : '' }} {{ (request()->routeIs('struktur-organisasi-bumdesma')) ? 'show' : '' }} {{ (request()->routeIs('program-kerja-bumdesma')) ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">BUMDESMA:</h6>
+      aria-expanded="true" aria-controls="bumdesma">
+      <i class="bi bi-bank2"></i>
+      <span>BUMDESMA</span>
+    </a>
+    <div id="bumdesma" class="collapse {{ (request()->routeIs('profil-lembaga-bumdesma')) ? 'show' : '' }} {{ (request()->routeIs('struktur-organisasi-bumdesma')) ? 'show' : '' }} {{ (request()->routeIs('program-kerja-bumdesma')) ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">BUMDESMA:</h6>
               <a class="collapse-item {{ (request()->routeIs('profil-lembaga-bumdesma')) ? 'active' : '' }}" href="{{ url('admin/profil-lembaga-bumdesma') }}">Profil Lembaga</a>
               <a class="collapse-item {{ (request()->routeIs('struktur-organisasi-bumdesma')) ? 'active' : '' }}" href="{{ url('admin/struktur-organisasi-bumdesma') }}">Struktur Organisasi</a>
               <a class="collapse-item {{ (request()->routeIs('program-kerja-bumdesma')) ? 'active' : '' }}" href="{{ url('admin/program-kerja-bumdesma') }}">Program Kerja</a>
           </div>
-      </div>
+        </div>
+      </li>
+    
+    <hr class="sidebar-divider d-none d-md-block" />
+      
+    <div class="sidebar-heading">Regulasi</div>
+
+    <li class="nav-item {{ (request()->routeIs('regulasi')) ? 'active' : '' }}">
+      <a class="nav-link" href="{{  url('/admin/regulasi') }}">
+        <i class="bi bi-file-earmark-text-fill"></i>
+        <span>Regulasi</span></a>
     </li>
 
     <!-- Sidebar Toggler (Sidebar) -->

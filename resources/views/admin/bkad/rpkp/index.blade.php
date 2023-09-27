@@ -36,7 +36,9 @@
             <tbody>
               @if ($data != null)
               @foreach ($data as $key => $item)
+              @can('admin')
               <a href="{{ url("admin/rpkp-bkad/$item->id/edit") }}" class="btn btn-success mb-3"><i class="bi bi-pencil-fill" title="Edit"> Edit</i></a>
+              @endcan
               <tr>
                 <td>{{ $key + 1 }}</td>
                 <td class="text-center"><img src="{{ asset('storage/' . $item->foto) }}" alt="" style="width: 8rem;"></td>

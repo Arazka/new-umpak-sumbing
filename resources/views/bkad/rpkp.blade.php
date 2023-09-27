@@ -14,18 +14,10 @@
         <h2 class="fw-bolder">Rencana Pembangunan Kawasan Pedesaan</h2>
         <div class="card my-4 p-2" style="width: 100%; border-radius: 1rem">
           <div class="card-body">
-            <h4 class="card-title text-danger fw-bolder mb-3">Uraian Perencanaan BKAD (mungkin dalam bentuk file excel)</h4>
+            <h4 class="card-title text-danger fw-bolder mb-3">Uraian Perencanaan BKAD</h4>
+            <img src="{{ asset('storage/'.$rpkp->first()->foto) }}" class="img-fluid" alt="..." style="border-radius: 1rem" />
             <p class="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit amet eum velit quia? Illo, fuga modi. Qui voluptatum aliquam, cum ducimus earum praesentium, eius perspiciatis voluptatibus vero autem odio natus quos consectetur
-              ab iste ullam, vitae obcaecati consequuntur? Temporibus voluptas nemo totam sint deserunt voluptatibus culpa unde molestiae blanditiis perferendis veniam consectetur nobis qui, ex odio porro. Omnis soluta ipsa libero sit natus
-              nisi mollitia vitae facere? Hic suscipit dolorum nam, incidunt placeat fuga qui eos? Autem nam iusto, odio vel, dolore laboriosam et non dicta hic molestias culpa possimus nisi, magni reprehenderit. Voluptate, similique id
-              ducimus laudantium rem quidem.
-            </p>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit amet eum velit quia? Illo, fuga modi. Qui voluptatum aliquam, cum ducimus earum praesentium, eius perspiciatis voluptatibus vero autem odio natus quos consectetur
-              ab iste ullam, vitae obcaecati consequuntur? Temporibus voluptas nemo totam sint deserunt voluptatibus culpa unde molestiae blanditiis perferendis veniam consectetur nobis qui, ex odio porro. Omnis soluta ipsa libero sit natus
-              nisi mollitia vitae facere? Hic suscipit dolorum nam, incidunt placeat fuga qui eos? Autem nam iusto, odio vel, dolore laboriosam et non dicta hic molestias culpa possimus nisi, magni reprehenderit. Voluptate, similique id
-              ducimus laudantium rem quidem.
+              {!! $rpkp->first()->deskripsi !!}
             </p>
           </div>
         </div>

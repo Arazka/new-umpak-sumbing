@@ -10,7 +10,7 @@ use App\Models\ProfileUmpakSumbing;
 
 class BerandaController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $item = Berita::orderBy('created_at', 'DESC')->paginate();
         $desa = Desa::orderBy('created_at', 'ASC')->paginate();

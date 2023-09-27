@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BeritaRequest extends FormRequest
+class RegulasiRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class BeritaRequest extends FormRequest
         return [
             'foto' => 'file|max:5120',
             'judul' => 'required|string',
-            'deskripsi' => 'required|max:375',
+            'deskripsi' => 'required|max:478'
         ];
     }
 
@@ -35,7 +35,7 @@ class BeritaRequest extends FormRequest
         return [
             'required' => 'isian : attribute harus diisi / tidak boleh kosong!',
             'foto.max' => 'Ukuran foto harus lebih kecil dari 5 MB',
-            'deskripsi.max' => 'Deskripsi tidak boleh lebih dari 375 karakter',
+            'deskripsi.max' => 'Deskripsi tidak boleh lebih dari 478 karakter',
         ];
     }
 }
