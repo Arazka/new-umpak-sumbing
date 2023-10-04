@@ -18,9 +18,9 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3 justify-content-between d-flex">
-      {{-- @if (Auth::user()->type == 'admin')
+      @if (Auth::user()->type == 'admin')
         <a class="btn btn-primary" href="{{ url('/admin/program-kerja-bkad/create') }}" title="Tambah Program Kerja BKAD">Tambah Program Kerja BKAD</a>
-      @endif --}}
+      @endif
       {{-- <a class="btn btn-warning" href="{{ url('/admin/view-kawasan') }}" title="Lihat Data Kawasan">Lihat Data Kawasan</a> --}}
       </div>
       <div class="card-body">
@@ -29,20 +29,32 @@
             <thead>
               <tr>
                 <th width=10>No</th>
-                <th width=300>Foto</th>
+                <th width=180>Foto</th>
                 <th>Deskripsi</th>
+                <th width=200>Aksi</th>
               </tr>
             </thead>
             <tbody>
               @if ($data != null)
               @foreach ($data as $key => $item)
               @can('admin')
-              <a href="{{ url("admin/program-kerja-bkad/$item->id/edit") }}" class="btn btn-success mb-3"><i class="bi bi-pencil-fill" title="Edit"> Edit</i></a>
               @endcan
               <tr>
                 <td>{{ $key + 1 }}</td>
                 <td class="text-center"><img src="{{ asset('storage/' . $item->foto) }}" alt="" style="width: 8rem;"></td>
-                <td>{!! Str::limit($item->deskripsi, 270) !!}</td>
+                <td>{!! Str::limit($item->deskripsi, 330) !!}</td>
+                <td class="gap-2 text-center">
+                  <form id="delete-item-{{$item->id}}" action="{{ url("/admin/program-kerja-bkad/$item->id") }}" method="POST">
+                    @csrf @method('DELETE')
+                    {{-- <button type="button" class="btn btn-primary"><i class="bi bi-folder-fill"></i> Lihat</button> --}}
+                    @can ('admin')
+                    <a href="{{ url("/admin/program-kerja-bkad/$item->id/edit") }}" class="btn btn-success"><i class="bi bi-pencil-fill" title="Edit"> Edit</i></a>
+                        <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus">
+                          <i class="fa fa-trash"></i> Hapus
+                        </button>
+                    @endcan
+                    </form>
+                </td>
               </tr>
               @endforeach
               @endif
