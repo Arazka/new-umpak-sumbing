@@ -5,7 +5,7 @@
         <div class="bandongan my-auto mx-2">Umpak Sumbing</div>
         <div class="title mx-2 mx-md-3">
           <div class="bandongan-1">Umpak Sumbing</div>
-          <div class="address">Kawasan Pedesaan Umpak Sumbing, Kecamatan Bandongan</div>
+          <div class="address">Kawasan Perdesaan Umpak Sumbing, Kecamatan Bandongan</div>
         </div>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">

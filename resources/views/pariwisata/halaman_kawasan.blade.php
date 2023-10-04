@@ -24,7 +24,9 @@
                 <section>
                     <img src="{{ asset('storage/'. $pariwisata->foto_pariwisata) }}" class="img-fluid my-3 w-100" alt="Blog Image"
                         style="height: 20rem; object-fit: cover;">
-                    <p>{!! $pariwisata->deskripsi !!}</p>
+                        <div id="deskripsi-container">
+                            {!! $pariwisata->deskripsi !!}
+                        </div>
                     <br>
                 </section>
             </section>
@@ -57,4 +59,14 @@
         </div>
         <!-- END -->
     </div>
+
+    <script>
+        // Ambil semua tag <img> dalam deskripsi
+        const deskripsiImages = document.querySelectorAll('#deskripsi-container img');
+    
+        // Tambahkan kelas img-fluid ke setiap gambar
+        deskripsiImages.forEach((img) => {
+            img.classList.add('img-fluid');
+        });
+    </script>
 @endsection

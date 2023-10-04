@@ -60,7 +60,7 @@
                     </div> --}}
                     <div class="form-group">
                         <label for="exampleInputPassword1">Deskripsi</label>
-                        <input id="deskripsi" type="hidden" name="deskripsi">
+                        <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi') }}">
                         <trix-editor input="deskripsi"></trix-editor>
                         @error('deskripsi')
                         <span class="text-danger">

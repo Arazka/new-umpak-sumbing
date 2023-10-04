@@ -22,7 +22,9 @@
                 <h3 class="text-left">{{ $desas->nama_produk }}</h3>
                 <section>
                     <img src="{{ asset('storage/'.$desas->foto) }}" class="img-fluid my-3 w-100" alt="Blog Image" style="height: 30rem; object-fit: cover;">
-                    <p>{!! $desas->deskripsi !!}</p>
+                    <div id="deskripsi-container">
+                        {!! $desas->deskripsi !!}
+                    </div>
                     <br>
                 </section>
             @endforeach
@@ -30,4 +32,13 @@
         </div>
         <!-- END -->
     </div>
+    <script>
+        // Ambil semua tag <img> dalam deskripsi
+        const deskripsiImages = document.querySelectorAll('#deskripsi-container img');
+    
+        // Tambahkan kelas img-fluid ke setiap gambar
+        deskripsiImages.forEach((img) => {
+            img.classList.add('img-fluid');
+        });
+    </script>
 @endsection
